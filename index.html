@@ -29,12 +29,13 @@
                 transform: scale(1.1);
                 background-color:rgb(82, 82, 140) ;
             }
-
+            
             #s1{
                 position: absolute;
                 top: 50%;
                 left: 45%;
-                transform: translateY(-50%);   
+                box-shadow: 0 0 10px 5px red, 0 0 20px 10px red, 0 0 30px 15px red;
+                border-radius: 20px; 
             }
             
             #s2{
@@ -59,8 +60,8 @@
             }
             #s5{
                 position: absolute;
-                top: 2%;
-                left: 45%;
+                top: 50%;
+                left: 25%;
                  
             }
            
@@ -79,7 +80,7 @@
             
             #s8{
                 position: absolute;
-                left: 88%;
+                left: 85%;
                 top: 45%;
                  
             }
@@ -90,13 +91,86 @@
                 top: 2%;
                  
             }
-            .s{
+            #s10{
+                position: absolute;
+                left: 65%;
+                top: 65%;
+                 
+            }
+            
+            #s11{
+                position: absolute;
+                left: 65%;
+                top: 35%;
+                 
+            }
+            
+            #s12{
+                position: absolute;
+                left: 45%;
+                top: 45%;
+                 
+            }
+            
+            h1{
+                font-size: 60px;
+                color: white ;
+                position: absolute;
+                top: 35%;
+                left: 30%;
                 display: none;
             }
+
+            h2{
+                font-size: 50px;
+                color: white ;
+                position: absolute;
+                top: 45%;
+                left: 41%;
+                display: none;
+            }
+
+            p{
+                position: absolute;
+                top: 41%;
+                left: 43%;
+                font-size: 60px;
+                color: white;
+                display: none;
+            }
+            
+            section{
+                display: none;
+            }
+            
             img{
                 position: absolute;
                 z-index: 1;
                 display: none;
+            }
+
+            #clic{
+                position: absolute;
+                left: 41%;
+                top: 2%;
+                color:gold;
+                font-size: 60px;
+                font-weight: bold;
+                display: none;
+            }
+            
+            #clik{
+                position: absolute;
+                left: 53%;
+                top: 2%;
+                color:gold;
+                font-size: 60px;
+                font-weight: bold;
+                display: none;
+            }
+
+            #pp{
+                font-size: 100px;
             }
 
 
@@ -104,43 +178,75 @@
     </head>
     <body>
 
-        <audio src="./aud/anime-ahh.mp3" type="audio/mpeg" preload="metadata"></audio>
+        <audio src="./aud/roblox-death-sound_1.mp3" type="audio/mpeg" preload="metadata"></audio>
+        <audio src="./aud/bg music-[AudioTrimmer.com]2.mp3" type="audio/mpeg" preload="metadata"></audio>
+        <audio src="aud/yaaay-[AudioTrimmer.com].mp3" type="audio/mpeg" preload="metadata"></audio>
+        <audio src="aud/woow.mp3" type="audio/mpeg" preload="metadata"></audio>
 
-        <section id="s1">
-            <button>click me</button>
+
+        <label id="clic" for="clik">Clicks: </label>
+        <label id="clik"></label>
+ 
+        <div id="s1">
+            <button id="fb">click me</button>
+        </div>
+        
+        <section  id="s2" >
+            <button class="s">hey,up here</button>
         </section>
         
-        <section class="s" id="s2" >
-            <button>hey,up here</button>
+        <section  id="s3">
+            <button class="s">oops,down there</button>
         </section>
         
-        <section class="s" id="s3">
-            <button>oops,down there</button>
+        <section  id="s4">
+            <button class="s">where r u clicking</button>
         </section>
         
-        <section class="s" id="s4">
-            <button>where r u clicking</button>
+        <section  id="s5">
+            <button class="s">duuude</button>
         </section>
         
-        <section class="s" id="s5">
-            <button>duuude</button>
+        <section  id="s6">
+            <button class="s">can't catch me</button>
         </section>
         
-        <section class="s" id="s6">
-            <button>can't catch me</button>
+        <section  id="s7">
+            <button class="s">john cena</button>
         </section>
         
-        <section class="s" id="s7">
-            <button>john cena</button>
+        <section  id="s8">
+            <button class="s">hallelujah</button>
         </section>
         
-        <section class="s" id="s8">
-            <button>hallelujah</button>
+        <section  id="s9">
+            <button class="s">U SUCK</button>
         </section>
         
-        <section class="s" id="s9">
-            <button>U SUCK</button>
+        <section  id="s10">
+            <button class="s">i'm laughing fr</button>
         </section>
+        
+        <section  id="s11">
+            <button class="s">wooooops</button>
+        </section>
+        
+        <section  id="s12">
+            <button class="s">come oooon</button>
+        </section>
+        
+        
+            <h1>CONGRATULATIONS</h1>
+            <h2>You've Won</h2>
+        
+        
+            <p class="p"></p>
+            <p class="p">And</p>
+            <p class="p">you've</p>
+            <p class="p">just</p>
+            <p class="p">got</p>
+            <p class="p">rickroll'd</p>
+        
 
         <div>
             <img src="./imgs/Trollface_non-free.png" width="300" length="300">
@@ -152,71 +258,127 @@
         
 
         <script>
-            let clk = document.querySelectorAll('button')
+            let clk = document.querySelectorAll('.s')
             let sec = document.querySelectorAll('section')
             let vid = document.querySelector('video')
             let im = document.querySelector('img')
-            let ad = document.querySelector('audio')
+            let ad = document.querySelectorAll('audio')
+            let lb = document.getElementById('clic')
+            let lb2 = document.getElementById('clik')
+            let s = document.getElementById("s1")
+            let fb = document.getElementById("fb")
+            let v = document.querySelectorAll("p")
+            let h = document.querySelector("h1")
+            let h2 = document.querySelector("h2")
+        
+            let int
+            let taked = 0
+            let rep = 1
+            let aked = 0
+            let kd = 0
+            let strt
+            let k = 700
+            let ck = 0
+            let isIntervalRunning = false
 
-            let rep = 2
-            let timer
-            
+            for(let i = 0 ; i < sec.length ; i++){
 
-            for(let i = 0 ; i < sec.length ; i++){ 
-
-                clk[i].addEventListener("mouseover", function(){
-
-                    if(i == 0){
-                        timer = setTimeout(function(){
-                            sec[i].style.display = "none";
-                            sec[i+1].style.display = "block";
-                        
-                            
-                        },700)
-                    }
-
-                    else if(i != sec.length - 1){
-                        timer = setTimeout(function(){
-                            sec[i].style.display = "none";
-                            sec[i+1].style.display = "block";
-                        
-                            
-                        },210) 
-                    }
-
-                    
-
-
-                    });
-
-                clk[i].addEventListener("mouseout", function(){
-                    clearTimeout(timer);
-                });
-
+                lb2.textContent = ck + "/50"
 
                 clk[i].addEventListener("click", function(){
-                    ad.play();
+                    ck++;
+                    ad[0].play();
+                    lb2.textContent = ck + "/50"
+                    sec[i].style.display = "none"
 
-                    if(i == sec.length - 1){
-                          
-                          sec[i].style.display = "none";
-                          vid.style.display = "block"
-                          vid.play();
-                          vid.addEventListener("ended",function(){
-                              
-                            if(rep > 0){
-                                vid.play();
-                                rep--;    
-                            }
+                    if(ck == 50){
+                        sec[i].style.display = "none"
+                        ad[1].pause()
+                        clearInterval(strt);
+                        lb.style.display ="none"
+                        lb2.style.display = "none"
+                        h.style.display = "block"
+                        h2.style.display = "block"
+                        ad[3].play()
+                        ad[2].play()
 
-                              im.style.display = "block";
-                          })}
-                    
-                })
+                        ad[2].addEventListener("ended",function(){
+
+                            h.style.display = "none"
+                            h2.style.display = "none"
+
+                            int = setInterval(function(){
+                                
+
+                                v[taked].style.display = "none"
+                                
+                                taked ++
+
+                                if(taked == v.length){
+                                    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
+                                }
+
+                                else
+                                    v[taked].style.display ="block"
+                            },200)
+                
+                })         
+            }})
                 
                 
+                ad[1].addEventListener("ended",function(){  
+                    sec[i].style.display = "none"
+                    ad[1].pause()
+                    clearInterval(strt);
+                    lb.style.display ="none"
+                    lb2.style.display = "none"
+                    vid.style.display = "block"
+                    vid.play();
+                    vid.addEventListener("ended",function(){
+                            
+                    if(rep > 0){
+                        vid.play();
+                        rep--;    
+                    }
+
+                    im.style.display = "block";
+
+                    })
+                    })
+            
+            } 
+
+            fb.addEventListener("click", function(){
+
+                ad[1].play();
+                s.style.display = "none"
+                lb.style.display ="block"
+                lb2.style.display = "block"
+                sec[0].style.display = "block"
                 
-            }
+    
+                if (!isIntervalRunning){
+
+
+                    strt = setInterval(function(){
+
+                       
+                        sec[aked].style.display = "none"
+                        aked++;
+
+                        if (aked == sec.length) {
+                            sec[0].style.display = "block";
+                            aked = 0;
+                        } 
+                        else {
+                            
+                            sec[aked].style.display = "block";
+                        } 
+                    },k)
+                }
+                
+            })
+            
         </script>
     </body>
 
