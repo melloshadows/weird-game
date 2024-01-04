@@ -2,8 +2,14 @@
 <html>
     <head>
         <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
             body{
                 background-color: black;
+                overflow: hidden;
             }
             video{
                 display: block;
@@ -14,6 +20,7 @@
             section{
                 box-shadow: 0 0 10px 5px red, 0 0 20px 10px red, 0 0 30px 15px red;
                 border-radius: 20px;
+                display: none;
             }
            
             button{
@@ -35,7 +42,8 @@
                 top: 50%;
                 left: 45%;
                 box-shadow: 0 0 10px 5px red, 0 0 20px 10px red, 0 0 30px 15px red;
-                border-radius: 20px; 
+                border-radius: 20px;
+                display: none; 
             }
             
             #s2{
@@ -129,19 +137,7 @@
                 left: 41%;
                 display: none;
             }
-
-            p{
-                position: absolute;
-                top: 41%;
-                left: 43%;
-                font-size: 60px;
-                color: white;
-                display: none;
-            }
             
-            section{
-                display: none;
-            }
             
             img{
                 position: absolute;
@@ -169,8 +165,93 @@
                 display: none;
             }
 
-            #pp{
-                font-size: 100px;
+            #Difficulty{
+                display: none;
+            }
+            h3{
+                font-size: 120px;
+                text-align: center;
+                margin-top: 30px ;
+                color: white;
+                font-family: 'Press Start 2P', cursive;
+            }
+
+            nav{
+                color: white;
+                border: 4px red solid;
+                border-radius: 20px;
+                width: 33%;
+                font-size: 60px;
+                margin: 100px auto;
+                line-height: 5rem;
+                font-family: 'Press Start 2P', cursive;
+
+            }
+            ul{
+                list-style-type: none;
+                text-align: center;
+                background-color: darkblue;
+                border-radius: 17px ;
+            }
+            li{
+                display: block;
+                padding: 60px;
+                cursor: pointer;
+                
+            }
+            li:last-child{
+                border-top: 2px solid red;
+            } 
+            li:last-child:hover{
+                background-color: rgb(50, 50, 155);
+                border-radius: 0 0 20px 20px;
+            }
+            li:first-child:hover{
+                background-color: rgb(50, 50, 155);
+                border-radius: 20px 20px 0 0;
+            }
+            #Difficulty-info{
+                height: 250px;
+                width: 300px;
+                border: 2px solid white;
+                position: absolute;
+                top: 42%;
+                left: 70%;
+                color: white;
+                font-size: 21px;
+                padding: 30px;
+                font-family: 'Press Start 2P', cursive;
+                
+            }
+            h4{
+                font-size: 30px;
+                text-align: center;
+            }
+            
+            #beg{
+                display: block;
+                position: absolute;
+                left: 45%;
+                top: 45%;
+
+            }
+
+            #res{
+                display: none;
+                position: absolute;
+                top: 85%;
+                left: 17.7%;
+                padding-left: 53px;
+                padding-right: 53px;
+                z-index: 1;
+            }
+            #end{
+                display: none;
+                position: absolute;
+                top: 85%;
+                left: 69%;
+                padding: 20px;
+                z-index: 1;
             }
 
 
@@ -178,14 +259,35 @@
     </head>
     <body>
 
-        <audio src="./aud/roblox-death-sound_1-[AudioTrimmer.com].mp3" type="audio/mpeg" preload="metadata"></audio>
+        <audio src="./aud/roblox-death-sound_1.mp3" type="audio/mpeg" preload="metadata"></audio>
         <audio src="./aud/bg music-[AudioTrimmer.com]2.mp3" type="audio/mpeg" preload="metadata"></audio>
         <audio src="aud/yaaay-[AudioTrimmer.com].mp3" type="audio/mpeg" preload="metadata"></audio>
         <audio src="aud/woow.mp3" type="audio/mpeg" preload="metadata"></audio>
+        <audio src="aud/menu music.mp3" type="audio/mpeg" preload="metadata" ></audio>
+        <audio src="aud/highp.mp3" type="audio/mpeg" preload="metadata" ></audio>
+        <audio src="aud/lowp.mp3" type="audio/mpeg" preload="metadata" ></audio>
 
 
-        <label id="clic" for="clik">Clicks: </label>
+        <button id="beg">Begin Game</button>
+
+        <div id="Difficulty">
+            <h3 class="firsth">Choose Your Difficulty</h1>
+            <nav>
+                <ul>
+                    <li id="li1">Medium</li>
+                    <li id="li2">Pagon</li>
+                </ul>
+            </nav>
+            <div id="Difficulty-info"><p>Difficulty Description: </p><br><h4></h4></div>
+        </div>
+
+        
+
+        <label id="clic" for="clic">Clicks: </label>
         <label id="clik"></label>
+
+        <button id="res">RESTART</button>
+        <button id="end">END</button>
  
         <div id="s1">
             <button id="fb">click me</button>
@@ -270,114 +372,323 @@
             let v = document.querySelectorAll("p")
             let h = document.querySelector("h1")
             let h2 = document.querySelector("h2")
+            let h3 = document.querySelector("h3")
+            let list1 = document.getElementById("li1")
+            let list2 = document.getElementById("li2")
+            let fourth = document.querySelector("h4")
+            let diff = document.getElementById("Difficulty")
+            let begbt = document.getElementById("beg")
+            let resbt = document.getElementById("res")
+            let endbt = document.getElementById("end")
         
             let int
+            let max = 50 
             let taked = 0
             let rep = 1
             let aked = 0
             let kd = 0
             let strt
+            let strt2
             let k = 700
+            let k2 = 600
             let ck = 0
             let isIntervalRunning = false
 
-            for(let i = 0 ; i < sec.length ; i++){
+            beg.addEventListener("click", function(){
+                ad[4].play()
+                beg.style.display = "none"
+                diff.style.display="block"
+            })
 
-                lb2.textContent = ck + "/50"
+            
+            li1.addEventListener("mouseover", function(){
+                fourth.textContent = "Just Your Normal Difficulty"
+               
+            })
+            
+            li2.addEventListener("mouseover", function(){
+                fourth.textContent = "You're Simply INSANE"
+                
+            })
+            
+            
+            li1.addEventListener("mouseout", function(){
+                fourth.textContent = ""
+            })
+        
+            li2.addEventListener("mouseout", function(){
+                fourth.textContent = ""
+            })
+            
+            
+            li1.addEventListener("click", function(){
+                diff.style.display = "none"
+                h3.style.display ="none" 
+                s.style.display = "block"
+                ad[4].pause()
+                ad[6].play()
+                setupMedium();
+              
+            })
+            
+            li2.addEventListener("click", function(){
+                diff.style.display = "none"
+                h3.style.display ="none" 
+                s.style.display = "block"
+                ad[4].pause()
+                ad[5].play()
+                setupPagon();
+                
+            })
 
-                clk[i].addEventListener("click", function(){
-                    ck++;
-                    ad[0].play();
-                    lb2.textContent = ck + "/50"
-                    sec[i].style.display = "none"
 
-                    if(ck == 50){
+
+            
+            function setupPagon(){
+                for(let i = 0 ; i < sec.length ; i++){
+
+
+                    clk[i].addEventListener("click", function(){
+                        ck++;
+                        ad[0].play();
+                        lb2.textContent = ck + "/" + max 
+                        sec[i].style.display = "none"
+
+                        if(ck == max){
+                            sec[i].style.display = "none"
+                            ad[1].pause()
+                            clearInterval(strt);
+                            lb.style.display ="none"
+                            lb2.style.display = "none"
+                            h.style.display = "block"
+                            h2.style.display = "block"
+                            ad[3].play()
+                            ad[2].play()
+
+                            ad[2].addEventListener("ended",function(){
+
+                                h.style.display = "none"
+                                h2.style.display = "none"
+
+                                int = setInterval(function(){
+                                    
+
+                                    v[taked].style.display = "none"
+                                    
+                                    taked ++
+
+                                    if(taked == v.length){
+                                        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
+                                    }
+
+                                    else
+                                        v[taked].style.display ="block"
+                                },200)
+                    
+                    })         
+                }})
+                    
+                    
+                    ad[1].addEventListener("ended",function(){  
                         sec[i].style.display = "none"
                         ad[1].pause()
                         clearInterval(strt);
                         lb.style.display ="none"
                         lb2.style.display = "none"
-                        h.style.display = "block"
-                        h2.style.display = "block"
-                        ad[3].play()
-                        ad[2].play()
-
-                        ad[2].addEventListener("ended",function(){
-
-                            h.style.display = "none"
-                            h2.style.display = "none"
-
-                            int = setInterval(function(){
-                                
-
-                                v[taked].style.display = "none"
-                                
-                                taked ++
-
-                                if(taked == v.length){
-                                    window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
-                                }
-
-                                else
-                                    v[taked].style.display ="block"
-                            },200)
-                
-                })         
-            }})
-                
-                
-                ad[1].addEventListener("ended",function(){  
-                    sec[i].style.display = "none"
-                    ad[1].pause()
-                    clearInterval(strt);
-                    lb.style.display ="none"
-                    lb2.style.display = "none"
-                    vid.style.display = "block"
-                    vid.play();
-                    vid.addEventListener("ended",function(){
-                            
-                    if(rep > 0){
+                        vid.style.display = "block"
                         vid.play();
-                        rep--;    
+                        vid.addEventListener("ended",function(){
+                            resbt.style.display ="block"
+                            end.style.display ="block"
+
+                            resbt.addEventListener("click", function(){
+                                resbt.style.display ="none"
+                                end.style.display ="none"
+                                vid.style.display = "none"
+                                ad[4].play()
+                                location.reload()
+                            })
+                            end.addEventListener("click", function(){
+                                resbt.style.display ="none"
+                                end.style.display ="none"
+                                vid.style.display = "none"
+                                ad[4].play()
+                                window.close()
+                            })
+                            
+
+                        })
+                        })
+                
+                } 
+
+
+                function begin() {
+                    if (sec[aked].style.display != "none") {
+                        sec[aked].style.display = "none";
+                        max++;
+                        lb2.textContent = ck + "/" + max;
                     }
 
-                    im.style.display = "block";
+                    aked++;
 
-                    })
-                    })
-            
-            } 
+                    if (aked == sec.length) {
+                        aked = sec.length - 2 ;
+                        sec[aked].style.display = "block" 
+                        clearInterval(strt);
 
-            fb.addEventListener("click", function(){
-
-                ad[1].play();
-                s.style.display = "none"
-                lb.style.display ="block"
-                lb2.style.display = "block"
-                sec[0].style.display = "block"
                 
-    
-                if (!isIntervalRunning){
+                        strt2 = setInterval(function () {
+                            if (sec[aked].style.display != "none") {
+                                sec[aked].style.display = "none";
+                                max++;
+                                lb2.textContent = ck + "/" + max;
+                            }
+                            aked--;
 
-
-                    strt = setInterval(function(){
-
-                       
-                        sec[aked].style.display = "none"
-                        aked++;
-
-                        if (aked == sec.length) {
-                            sec[0].style.display = "block";
-                            aked = 0;
-                        } 
-                        else {
-                            
-                            sec[aked].style.display = "block";
-                        } 
-                    },k)
+                            if (aked < 0) {
+                                aked = 1 
+                                sec[aked].style.display = "block" 
+                                clearInterval(strt2);
+                                strt = setInterval(begin, k);
+                            } else {
+                                sec[aked].style.display = "block";
+                            }
+                        }, k2);
+                        
+                    } 
+                    else {
+                        sec[aked].style.display = "block";
+                    }
                 }
+
                 
-            })
+
+                fb.addEventListener("click", function () {
+                    ad[1].play();
+                    s.style.display = "none";
+                    lb.style.display = "block";
+                    lb2.style.display = "block";
+                    sec[0].style.display = "block";
+                    lb2.textContent = "0/50";
+
+                    if (!isIntervalRunning) {
+                        strt = setInterval(begin, k);
+                    }
+                });
+            }
+
+            function setupMedium(){
+                for(let i = 0 ; i < sec.length ; i++){
+
+                    lb2.textContent = ck + "/50"
+
+                    clk[i].addEventListener("click", function(){
+                        ck++;
+                        ad[0].play();
+                        lb2.textContent = ck + "/50"
+                        sec[i].style.display = "none"
+
+                        if(ck == 50){
+                            sec[i].style.display = "none"
+                            ad[1].pause()
+                            clearInterval(strt);
+                            lb.style.display ="none"
+                            lb2.style.display = "none"
+                            h.style.display = "block"
+                            h2.style.display = "block"
+                            ad[3].play()
+                            ad[2].play()
+
+                            ad[2].addEventListener("ended",function(){
+
+                                h.style.display = "none"
+                                h2.style.display = "none"
+
+                                int = setInterval(function(){
+                                    
+
+                                    v[taked].style.display = "none"
+                                    
+                                    taked ++
+
+                                    if(taked == v.length){
+                                        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
+                                    }
+
+                                    else
+                                        v[taked].style.display ="block"
+                                },200)
+
+                    })         
+                    }})
+
+
+                    ad[1].addEventListener("ended",function(){  
+                        sec[i].style.display = "none"
+                        ad[1].pause()
+                        clearInterval(strt);
+                        lb.style.display ="none"
+                        lb2.style.display = "none"
+                        vid.style.display = "block"
+                        vid.play();
+                        vid.addEventListener("ended",function(){
+                                
+                            resbt.style.display ="block"
+                            end.style.display ="block"
+
+                            resbt.addEventListener("click", function(){
+                                resbt.style.display ="none"
+                                end.style.display ="none"
+                                vid.style.display = "none"
+                                ad[4].play()
+                                location.reload()
+                            })
+                            end.addEventListener("click", function(){
+                                resbt.style.display ="none"
+                                end.style.display ="none"
+                                vid.style.display = "none"
+                                ad[4].play()
+                                window.close()
+                            })
+
+                        })
+                        })
+
+                    } 
+
+                    fb.addEventListener("click", function(){
+
+                    ad[1].play();
+                    s.style.display = "none"
+                    lb.style.display ="block"
+                    lb2.style.display = "block"
+                    sec[0].style.display = "block"
+
+
+                    if (!isIntervalRunning){
+
+
+                        strt = setInterval(function(){
+
+                        
+                            sec[aked].style.display = "none"
+                            aked++;
+
+                            if (aked == sec.length) {
+                                sec[0].style.display = "block";
+                                aked = 0;
+                            } 
+                            else {
+                                
+                                sec[aked].style.display = "block";
+                            } 
+                        },k)
+                    }
+
+                    })
+            }
+           
             
         </script>
     </body>
