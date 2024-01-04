@@ -262,6 +262,12 @@
                 padding: 20px;
                 z-index: 1;
             }
+            h5{
+                display: block;
+                font-size: 21px;
+                
+
+            }
 
 
         </style>
@@ -287,7 +293,7 @@
                     <li id="li2">Pagon</li>
                 </ul>
             </nav>
-            <div id="Difficulty-info"><p>Difficulty Description: </p><br><h4></h4></div>
+            <div id="Difficulty-info"><h5 >Difficulty Description: </h5><br><h4></h4></div>
         </div>
 
         
@@ -502,7 +508,8 @@
                         sec[i].style.display = "none"
                         ad[1].pause()
                         clearInterval(strt);
-                        lb.style.display ="none"
+                        clearInterval(strt2);
+                        lb.style.display = "none"
                         lb2.style.display = "none"
                         vid.style.display = "block"
                         vid.play();
@@ -638,6 +645,7 @@
                         sec[i].style.display = "none"
                         ad[1].pause()
                         clearInterval(strt);
+                        clearInterval(strt2);
                         lb.style.display ="none"
                         lb2.style.display = "none"
                         vid.style.display = "block"
