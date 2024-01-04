@@ -399,7 +399,7 @@
             let strt
             let strt2
             let k = 700
-            let k2 = 600
+            let k2 = 500
             let ck = 0
             let isIntervalRunning = false
 
@@ -536,7 +536,7 @@
                 function begin() {
                     if (sec[aked].style.display != "none") {
                         sec[aked].style.display = "none";
-                        max++;
+                        max+=2;
                         lb2.textContent = ck + "/" + max;
                     }
 
@@ -551,7 +551,7 @@
                         strt2 = setInterval(function () {
                             if (sec[aked].style.display != "none") {
                                 sec[aked].style.display = "none";
-                                max++;
+                                max+=2;
                                 lb2.textContent = ck + "/" + max;
                             }
                             aked--;
