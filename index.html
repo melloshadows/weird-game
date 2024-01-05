@@ -155,9 +155,10 @@
             }
 
             #clic{
-                position: absolute;
+                margin-left: 40%;
+                /* position: absolute;
                 left: 41%;
-                top: 2%;
+                top: 2%; */
                 color:gold;
                 font-size: 60px;
                 font-weight: bold;
@@ -165,9 +166,11 @@
             }
             
             #clik{
-                position: absolute;
+                /* margin-left: 50%; */
+                /* margin: 10px auto; */
+                /* position: absolute;
                 left: 53%;
-                top: 2%;
+                top: 2%; */
                 color:gold;
                 font-size: 60px;
                 font-weight: bold;
@@ -180,7 +183,7 @@
             h3{
                 font-size: 120px;
                 text-align: center;
-                margin-top: 30px ;
+                margin-top: 25px ;
                 color: white;
                 font-family: 'Press Start 2P', cursive;
             }
@@ -190,8 +193,8 @@
                 border: 4px red solid;
                 border-radius: 20px;
                 width: 33%;
-                font-size: 60px;
-                margin: 100px auto;
+                font-size: 50px;
+                margin: 55px auto;
                 line-height: 5rem;
                 font-family: 'Press Start 2P', cursive;
 
@@ -204,7 +207,7 @@
             }
             li{
                 display: block;
-                padding: 60px;
+                padding: 40px;
                 cursor: pointer;
                 
             }
@@ -225,12 +228,11 @@
                 border: 2px solid white;
                 position: absolute;
                 top: 42%;
-                left: 70%;
+                left: 70%; 
                 color: white;
                 font-size: 21px;
                 padding: 30px;
-                font-family: 'Press Start 2P', cursive;
-                
+                font-family: 'Press Start 2P', cursive;                
             }
             h4{
                 font-size: 30px;
@@ -240,9 +242,8 @@
             #beg{
                 display: block;
                 position: absolute;
-                left: 45%;
                 top: 45%;
-
+                left: 43%;    
             }
 
             #res{
@@ -265,8 +266,12 @@
             h5{
                 display: block;
                 font-size: 21px;
-                
-
+            }
+            #li3{
+                border-top: 2px solid red;
+            }
+            #li3:hover{
+                background-color: rgb(50, 50, 155);
             }
 
 
@@ -280,16 +285,20 @@
         <audio src="aud/woow.mp3" type="audio/mpeg" preload="metadata"></audio>
         <audio src="aud/menu music.mp3" type="audio/mpeg" preload="metadata" ></audio>
         <audio src="aud/highp.mp3" type="audio/mpeg" preload="metadata" ></audio>
+        <audio src="aud/mediump.mp3" type="audio/mpeg" preload="metadata" ></audio>
         <audio src="aud/lowp.mp3" type="audio/mpeg" preload="metadata" ></audio>
 
-
-        <button id="beg">Begin Game</button>
+        <div id="cont">
+            <button id="beg">Begin Game</button>
+        </div>
+        
 
         <div id="Difficulty">
             <h3 class="firsth">Choose Your Difficulty</h1>
             <nav>
                 <ul>
                     <li id="li1">Medium</li>
+                    <li id="li3">Hard</li>
                     <li id="li2">Pagon</li>
                 </ul>
             </nav>
@@ -390,6 +399,7 @@
             let h3 = document.querySelector("h3")
             let list1 = document.getElementById("li1")
             let list2 = document.getElementById("li2")
+            let list3 = document.getElementById("li3")
             let fourth = document.querySelector("h4")
             let diff = document.getElementById("Difficulty")
             let begbt = document.getElementById("beg")
@@ -405,7 +415,7 @@
             let strt
             let strt2
             let k = 700
-            let k2 = 500
+            let k2 = 600
             let ck = 0
             let isIntervalRunning = false
 
@@ -426,6 +436,11 @@
                 
             })
             
+            li3.addEventListener("mouseover", function(){
+                fourth.textContent = "You Want To Spice Things Up "
+                
+            })
+            
             
             li1.addEventListener("mouseout", function(){
                 fourth.textContent = ""
@@ -435,13 +450,17 @@
                 fourth.textContent = ""
             })
             
+            li3.addEventListener("mouseout", function(){
+                fourth.textContent = ""
+            })
+            
             
             li1.addEventListener("click", function(){
                 diff.style.display = "none"
                 h3.style.display ="none" 
                 s.style.display = "block"
                 ad[4].pause()
-                ad[6].play()
+                ad[7].play()
                 setupMedium();
               
             })
@@ -455,9 +474,152 @@
                 setupPagon();
                 
             })
+            
+            li3.addEventListener("click", function(){
+                diff.style.display = "none"
+                h3.style.display ="none" 
+                s.style.display = "block"
+                ad[4].pause()
+                ad[6].play()
+                setupHard();
+            })
 
 
+            function setupHard(){
+                for(let i = 0 ; i < sec.length ; i++){
 
+
+                    clk[i].addEventListener("click", function(){
+                        ck++;
+                        ad[0].play();
+                        lb2.textContent = ck + "/" + max 
+                        sec[i].style.display = "none"
+
+                        if(ck == max){
+                            sec[i].style.display = "none"
+                            ad[1].pause()
+                            clearInterval(strt);
+                            lb.style.display ="none"
+                            lb2.style.display = "none"
+                            h.style.display = "block"
+                            h2.style.display = "block"
+                            ad[3].play()
+                            ad[2].play()
+
+                            ad[2].addEventListener("ended",function(){
+
+                                h.style.display = "none"
+                                h2.style.display = "none"
+
+                                int = setInterval(function(){
+                                    
+
+                                    v[taked].style.display = "none"
+                                    
+                                    taked ++
+
+                                    if(taked == v.length){
+                                        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
+                                    }
+
+                                    else
+                                        v[taked].style.display ="block"
+                                },200)
+                    
+                    })         
+                }})
+                    
+                    
+                    ad[1].addEventListener("ended",function(){  
+                        sec[i].style.display = "none"
+                        ad[1].pause()
+                        clearInterval(strt);
+                        clearInterval(strt2);
+                        lb.style.display = "none"
+                        lb2.style.display = "none"
+                        vid.style.display = "block"
+                        vid.play();
+                        vid.addEventListener("ended",function(){
+                            resbt.style.display ="block"
+                            end.style.display ="block"
+
+                            resbt.addEventListener("click", function(){
+                                resbt.style.display ="none"
+                                end.style.display ="none"
+                                vid.style.display = "none"
+                                ad[4].play()
+                                location.reload()
+                            })
+                            
+                            end.addEventListener("click", function(){
+                                resbt.style.display ="none"
+                                end.style.display ="none"
+                                vid.style.display = "none"
+                                ad[4].play()
+                                window.close()
+                            })
+                            
+
+                        })
+                        })
+                
+                } 
+
+
+                function begin() {
+                    if (sec[aked].style.display != "none") {
+                        sec[aked].style.display = "none";
+                        max++;
+                        lb2.textContent = ck + "/" + max;
+                    }
+
+                    aked++;
+
+                    if (aked == sec.length) {
+                        aked = sec.length - 2 ;
+                        sec[aked].style.display = "block" 
+                        clearInterval(strt);
+
+                
+                        strt2 = setInterval(function () {
+                            if (sec[aked].style.display != "none") {
+                                sec[aked].style.display = "none";
+                                max++;
+                                lb2.textContent = ck + "/" + max;
+                            }
+                            aked--;
+
+                            if (aked < 0) {
+                                aked = 1 
+                                sec[aked].style.display = "block" 
+                                clearInterval(strt2);
+                                strt = setInterval(begin, k);
+                            } else {
+                                sec[aked].style.display = "block";
+                            }
+                        }, k2);
+                        
+                    } 
+                    else {
+                        sec[aked].style.display = "block";
+                    }
+                }
+
+                
+
+                fb.addEventListener("click", function () {
+                    ad[1].play();
+                    s.style.display = "none";
+                    lb.style.display = "inline-block";
+                    lb2.style.display = "inline-block";
+                    sec[0].style.display = "block";
+                    lb2.textContent = "0/50";
+
+                    if (!isIntervalRunning) {
+                        strt = setInterval(begin, k);
+                    }
+                });
+            }
             
             function setupPagon(){
                 for(let i = 0 ; i < sec.length ; i++){
@@ -584,8 +746,8 @@
                 fb.addEventListener("click", function () {
                     ad[1].play();
                     s.style.display = "none";
-                    lb.style.display = "block";
-                    lb2.style.display = "block";
+                    lb.style.display = "inline-block";
+                    lb2.style.display = "inline-block";
                     sec[0].style.display = "block";
                     lb2.textContent = "0/50";
 
@@ -679,8 +841,8 @@
 
                     ad[1].play();
                     s.style.display = "none"
-                    lb.style.display ="block"
-                    lb2.style.display = "block"
+                    lb.style.display ="inline-block"
+                    lb2.style.display = "inline-block"
                     sec[0].style.display = "block"
 
 
