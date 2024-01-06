@@ -177,7 +177,7 @@
                 display: none;
             }
 
-            #Difficulty{
+            #Difficulty-section{
                 display: none;
             }
             h3{
@@ -293,7 +293,7 @@
         </div>
         
 
-        <div id="Difficulty">
+        <div id="Difficulty-section">
             <h3 class="firsth">Choose Your Difficulty</h1>
             <nav>
                 <ul>
@@ -302,7 +302,7 @@
                     <li id="li2">Pagon</li>
                 </ul>
             </nav>
-            <div id="Difficulty-info"><h5 >Difficulty Description: </h5><br><h4></h4></div>
+            <div id="Difficulty-info"><h5>Difficulty Description: </h5> <br> <h4></h4> </div>
         </div>
 
         
@@ -313,9 +313,9 @@
         <button id="res">RESTART</button>
         <button id="end">END</button>
  
-        <div id="s1">
-            <button id="fb">click me</button>
-        </div>
+        
+        <button id="s1">click me</button>
+        
         
         <section  id="s2" >
             <button class="s">hey,up here</button>
@@ -366,122 +366,111 @@
             <h2>You've Won</h2>
         
         
-            <p class="p"></p>
-            <p class="p">And</p>
-            <p class="p">you've</p>
-            <p class="p">just</p>
-            <p class="p">got</p>
-            <p class="p">rickroll'd</p>
+            <p></p>
+            <p>And</p>
+            <p>you've</p>
+            <p>just</p>
+            <p>got</p>
+            <p>rickroll'd</p>
         
 
         <div>
-            <img src="./imgs/Trollface_non-free.png" width="300" length="300">
-            
             <video src="./vid/CASE 2_ Animatronics Survival - The Owl Jumpscare (online-video-cutter.com).mp4" width="1300"></video>
         </div>
         
 
-        
 
         <script>
-            let clk = document.querySelectorAll('.s')
+            let button = document.querySelectorAll('.s')
             let sec = document.querySelectorAll('section')
             let vid = document.querySelector('video')
-            let im = document.querySelector('img')
-            let ad = document.querySelectorAll('audio')
-            let lb = document.getElementById('clic')
-            let lb2 = document.getElementById('clik')
-            let s = document.getElementById("s1")
-            let fb = document.getElementById("fb")
-            let v = document.querySelectorAll("p")
+            let aud = document.querySelectorAll('audio')
+            let label = document.getElementById('clic')
+            let label2 = document.getElementById('clik')
+            let startGameButton = document.getElementById("s1")
+            let p = document.querySelectorAll("p")
             let h = document.querySelector("h1")
             let h2 = document.querySelector("h2")
             let h3 = document.querySelector("h3")
-            let list1 = document.getElementById("li1")
-            let list2 = document.getElementById("li2")
-            let list3 = document.getElementById("li3")
-            let fourth = document.querySelector("h4")
-            let diff = document.getElementById("Difficulty")
-            let begbt = document.getElementById("beg")
-            let resbt = document.getElementById("res")
-            let endbt = document.getElementById("end")
+            let h4 = document.querySelector("h4")
+            let difficultyChoice = document.querySelectorAll("li")
+            let difficultySection = document.getElementById("Difficulty-section")
+            let enterGameButton = document.getElementById("beg")
+            let restartGameButton = document.getElementById("res")
+            let endGameButton = document.getElementById("end")
         
-            let int
-            let max = 50 
-            let taked = 0
-            let rep = 1
-            let aked = 0
-            let kd = 0
-            let strt
-            let strt2
-            let k = 700
-            let k2 = 600
-            let ck = 0
-            let isIntervalRunning = false
+            let pInterval
+            let maxCounter = 50 
+            let pIntervalIndex = 0
+            let mainIntervalIndex = 0
+            let mainInterval
+            let reversedInterval
+            let mainIntervalTimer = 700
+            let reversedIntervalTimer = 600
+            let clicks = 0
 
-            beg.addEventListener("click", function(){
-                ad[4].play()
-                beg.style.display = "none"
-                diff.style.display="block"
+            enterGameButton.addEventListener("click", function(){
+                aud[4].play()
+                enterGameButton.style.display = "none"
+                difficultySection.style.display="block"
             })
 
             
-            li1.addEventListener("mouseover", function(){
-                fourth.textContent = "Just Your Normal Difficulty"
+            difficultyChoice[0].addEventListener("mouseover", function(){
+                h4.textContent = "Just Your Normal Difficulty"
                
             })
             
-            li2.addEventListener("mouseover", function(){
-                fourth.textContent = "You're Simply INSANE!"
+            difficultyChoice[1].addEventListener("mouseover", function(){
+                h4.textContent = "You Want To Spice Things Up"
                 
             })
             
-            li3.addEventListener("mouseover", function(){
-                fourth.textContent = "You Want To Spice Things Up "
+            difficultyChoice[2].addEventListener("mouseover", function(){
+                h4.textContent = "You're Simply INSANE!"
                 
             })
             
             
-            li1.addEventListener("mouseout", function(){
-                fourth.textContent = ""
+            difficultyChoice[0].addEventListener("mouseout", function(){
+                h4.textContent = ""
             })
         
-            li2.addEventListener("mouseout", function(){
-                fourth.textContent = ""
+            difficultyChoice[1].addEventListener("mouseout", function(){
+                h4.textContent = ""
             })
             
-            li3.addEventListener("mouseout", function(){
-                fourth.textContent = ""
+            difficultyChoice[2].addEventListener("mouseout", function(){
+                h4.textContent = ""
             })
             
             
-            li1.addEventListener("click", function(){
-                diff.style.display = "none"
+            difficultyChoice[0].addEventListener("click", function(){
+                difficultySection.style.display = "none"
                 h3.style.display ="none" 
-                s.style.display = "block"
-                ad[4].pause()
-                ad[7].play()
+                startGameButton.style.display = "block"
+                aud[4].pause()
+                aud[7].play()
                 setupMedium();
               
             })
             
-            li2.addEventListener("click", function(){
-                diff.style.display = "none"
-                h3.style.display ="none" 
-                s.style.display = "block"
-                ad[4].pause()
-                ad[5].play()
-                setupPagon();
-                
+            difficultyChoice[1].addEventListener("click", function(){
+                difficultySection.style.display = "none"
+                h3.style.display = "none" 
+                startGameButton.style.display = "block"
+                aud[4].pause()
+                aud[6].play()
+                setupHard();
             })
             
-            li3.addEventListener("click", function(){
-                diff.style.display = "none"
-                h3.style.display ="none" 
-                s.style.display = "block"
-                ad[4].pause()
-                ad[6].play()
-                setupHard();
+            difficultyChoice[2].addEventListener("click", function(){
+                difficultySection.style.display = "none"
+                h3.style.display = "none" 
+                startGameButton.style.display = "block"
+                aud[4].pause()
+                aud[5].play()
+                setupPagon();
             })
 
 
@@ -489,73 +478,73 @@
                 for(let i = 0 ; i < sec.length ; i++){
 
 
-                    clk[i].addEventListener("click", function(){
-                        ck++;
-                        ad[0].play();
-                        lb2.textContent = ck + "/" + max 
+                    button[i].addEventListener("click", function(){
+                        clicks++;
+                        aud[0].play();
+                        label2.textContent = clicks + "/" + maxCounter 
                         sec[i].style.display = "none"
 
-                        if(ck == max){
+                        if(clicks == maxCounter){
                             sec[i].style.display = "none"
-                            ad[1].pause()
-                            clearInterval(strt);
-                            lb.style.display ="none"
-                            lb2.style.display = "none"
+                            aud[1].pause()
+                            clearInterval(mainInterval);
+                            label.style.display ="none"
+                            label2.style.display = "none"
                             h.style.display = "block"
                             h2.style.display = "block"
-                            ad[3].play()
-                            ad[2].play()
+                            aud[3].play()
+                            aud[2].play()
 
-                            ad[2].addEventListener("ended",function(){
+                            aud[2].addEventListener("ended",function(){
 
                                 h.style.display = "none"
                                 h2.style.display = "none"
 
-                                int = setInterval(function(){
+                                pInterval= setInterval(function(){
                                     
 
-                                    v[taked].style.display = "none"
+                                    p[pIntervalIndex].style.display = "none"
                                     
-                                    taked ++
+                                    pIntervalIndex++
 
-                                    if(taked == v.length){
+                                    if(pIntervalIndex == p.length){
                                         window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
                                     }
 
                                     else
-                                        v[taked].style.display ="block"
+                                        p[pIntervalIndex].style.display ="block"
                                 },200)
                     
                     })         
                 }})
                     
                     
-                    ad[1].addEventListener("ended",function(){  
+                    aud[1].addEventListener("ended",function(){  
                         sec[i].style.display = "none"
-                        ad[1].pause()
-                        clearInterval(strt);
-                        clearInterval(strt2);
-                        lb.style.display = "none"
-                        lb2.style.display = "none"
+                        aud[1].pause()
+                        clearInterval(mainInterval);
+                        clearInterval(reversedInterval);
+                        label.style.display = "none"
+                        label2.style.display = "none"
                         vid.style.display = "block"
                         vid.play();
                         vid.addEventListener("ended",function(){
-                            resbt.style.display ="block"
-                            end.style.display ="block"
+                            restartGameButton.style.display ="block"
+                            endGameButton.style.display ="block"
 
-                            resbt.addEventListener("click", function(){
-                                resbt.style.display ="none"
-                                end.style.display ="none"
+                            restartGameButton.addEventListener("click", function(){
+                                restartGameButton.style.display ="none"
+                                endGameButton.style.display ="none"
                                 vid.style.display = "none"
-                                ad[4].play()
+                                aud[4].play()
                                 location.reload()
                             })
                             
-                            end.addEventListener("click", function(){
-                                resbt.style.display ="none"
-                                end.style.display ="none"
+                            endGameButton.addEventListener("click", function(){
+                                restartGameButton.style.display ="none"
+                                endGameButton.style.display ="none"
                                 vid.style.display = "none"
-                                ad[4].play()
+                                aud[4].play()
                                 window.close()
                             })
                             
@@ -567,57 +556,57 @@
 
 
                 function begin() {
-                    if (sec[aked].style.display != "none") {
-                        sec[aked].style.display = "none";
-                        max++;
-                        lb2.textContent = ck + "/" + max;
+                    if (sec[mainIntervalIndex].style.display != "none") {
+                        sec[mainIntervalIndex].style.display = "none";
+                        maxCounter++;
+                        label2.textContent = clicks + "/" + maxCounter;
                     }
 
-                    aked++;
+                    mainIntervalIndex++;
 
-                    if (aked == sec.length) {
-                        aked = sec.length - 2 ;
-                        sec[aked].style.display = "block" 
-                        clearInterval(strt);
+                    if (mainIntervalIndex == sec.length) {
+                        mainIntervalIndex = sec.length - 2 ;
+                        sec[mainIntervalIndex].style.display = "block" 
+                        clearInterval(mainInterval);
 
                 
-                        strt2 = setInterval(function () {
-                            if (sec[aked].style.display != "none") {
-                                sec[aked].style.display = "none";
-                                max++;
-                                lb2.textContent = ck + "/" + max;
+                        reversedInterval = setInterval(function () {
+                            if (sec[mainIntervalIndex].style.display != "none") {
+                                sec[mainIntervalIndex].style.display = "none";
+                                maxCounter++;
+                                label2.textContent = clicks + "/" + maxCounter;
                             }
-                            aked--;
+                            mainIntervalIndex--;
 
-                            if (aked < 0) {
-                                aked = 1 
-                                sec[aked].style.display = "block" 
-                                clearInterval(strt2);
-                                strt = setInterval(begin, k);
+                            if (mainIntervalIndex < 0) {
+                                mainIntervalIndex = 1 
+                                sec[mainIntervalIndex].style.display = "block" 
+                                clearInterval(reversedInterval);
+                                mainInterval = setInterval(begin, mainIntervalTimer);
                             } else {
-                                sec[aked].style.display = "block";
+                                sec[mainIntervalIndex].style.display = "block";
                             }
-                        }, k2);
+                        }, reversedIntervalTimer);
                         
                     } 
                     else {
-                        sec[aked].style.display = "block";
+                        sec[mainIntervalIndex].style.display = "block";
                     }
                 }
 
                 
 
-                fb.addEventListener("click", function () {
-                    ad[1].play();
-                    s.style.display = "none";
-                    lb.style.display = "inline-block";
-                    lb2.style.display = "inline-block";
+                startGameButton.addEventListener("click", function () {
+                    aud[1].play();
+                    startGameButton.style.display = "none";
+                    label.style.display = "inline-block";
+                    label2.style.display = "inline-block";
                     sec[0].style.display = "block";
-                    lb2.textContent = "0/50";
+                    label2.textContent = "0/50";
 
-                    if (!isIntervalRunning) {
-                        strt = setInterval(begin, k);
-                    }
+                    
+                    mainInterval = setInterval(begin, mainIntervalTimer);
+                    
                 });
             }
             
@@ -625,73 +614,73 @@
                 for(let i = 0 ; i < sec.length ; i++){
 
 
-                    clk[i].addEventListener("click", function(){
-                        ck++;
-                        ad[0].play();
-                        lb2.textContent = ck + "/" + max 
+                    button[i].addEventListener("click", function(){
+                        clicks++;
+                        aud[0].play();
+                        label2.textContent = clicks + "/" + maxCounter 
                         sec[i].style.display = "none"
 
-                        if(ck == max){
+                        if(clicks == maxCounter){
                             sec[i].style.display = "none"
-                            ad[1].pause()
-                            clearInterval(strt);
-                            lb.style.display ="none"
-                            lb2.style.display = "none"
+                            aud[1].pause()
+                            clearInterval(mainInterval);
+                            label.style.display ="none"
+                            label2.style.display = "none"
                             h.style.display = "block"
                             h2.style.display = "block"
-                            ad[3].play()
-                            ad[2].play()
+                            aud[3].play()
+                            aud[2].play()
 
-                            ad[2].addEventListener("ended",function(){
+                            aud[2].addEventListener("ended",function(){
 
                                 h.style.display = "none"
                                 h2.style.display = "none"
 
-                                int = setInterval(function(){
+                                pInterval= setInterval(function(){
                                     
 
-                                    v[taked].style.display = "none"
+                                    p[pIntervalIndex].style.display = "none"
                                     
-                                    taked ++
+                                    pIntervalIndex ++
 
-                                    if(taked == v.length){
+                                    if(pIntervalIndex == p.length){
                                         window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
                                     }
 
                                     else
-                                        v[taked].style.display ="block"
+                                        p[pIntervalIndex].style.display ="block"
                                 },200)
                     
                     })         
                 }})
                     
                     
-                    ad[1].addEventListener("ended",function(){  
+                    aud[1].addEventListener("ended",function(){  
                         sec[i].style.display = "none"
-                        ad[1].pause()
-                        clearInterval(strt);
-                        clearInterval(strt2);
-                        lb.style.display = "none"
-                        lb2.style.display = "none"
+                        aud[1].pause()
+                        clearInterval(mainInterval);
+                        clearInterval(reversedInterval);
+                        label.style.display = "none"
+                        label2.style.display = "none"
                         vid.style.display = "block"
                         vid.play();
                         vid.addEventListener("ended",function(){
-                            resbt.style.display ="block"
-                            end.style.display ="block"
+                            restartGameButton.style.display ="block"
+                            endGameButton.style.display ="block"
 
-                            resbt.addEventListener("click", function(){
-                                resbt.style.display ="none"
-                                end.style.display ="none"
+                            restartGameButton.addEventListener("click", function(){
+                                restartGameButton.style.display ="none"
+                                endGameButton.style.display ="none"
                                 vid.style.display = "none"
-                                ad[4].play()
+                                aud[4].play()
                                 location.reload()
                             })
                             
-                            end.addEventListener("click", function(){
-                                resbt.style.display ="none"
-                                end.style.display ="none"
+                            endGameButton.addEventListener("click", function(){
+                                restartGameButton.style.display ="none"
+                                endGameButton.style.display ="none"
                                 vid.style.display = "none"
-                                ad[4].play()
+                                aud[4].play()
                                 window.close()
                             })
                             
@@ -703,132 +692,132 @@
 
 
                 function begin() {
-                    if (sec[aked].style.display != "none") {
-                        sec[aked].style.display = "none";
-                        max+=2;
-                        lb2.textContent = ck + "/" + max;
+                    if (sec[mainIntervalIndex].style.display != "none") {
+                        sec[mainIntervalIndex].style.display = "none";
+                        maxCounter+=2;
+                        label2.textContent = clicks + "/" + maxCounter;
                     }
 
-                    aked++;
+                    mainIntervalIndex++;
 
-                    if (aked == sec.length) {
-                        aked = sec.length - 2 ;
-                        sec[aked].style.display = "block" 
-                        clearInterval(strt);
+                    if (mainIntervalIndex == sec.length) {
+                        mainIntervalIndex = sec.length - 2 ;
+                        sec[mainIntervalIndex].style.display = "block" 
+                        clearInterval(mainInterval);
 
                 
-                        strt2 = setInterval(function () {
-                            if (sec[aked].style.display != "none") {
-                                sec[aked].style.display = "none";
-                                max+=2;
-                                lb2.textContent = ck + "/" + max;
+                        reversedInterval = setInterval(function () {
+                            if (sec[mainIntervalIndex].style.display != "none") {
+                                sec[mainIntervalIndex].style.display = "none";
+                                maxCounter+=2;
+                                label2.textContent = clicks + "/" + maxCounter;
                             }
-                            aked--;
+                            mainIntervalIndex--;
 
-                            if (aked < 0) {
-                                aked = 1 
-                                sec[aked].style.display = "block" 
-                                clearInterval(strt2);
-                                strt = setInterval(begin, k);
+                            if (mainIntervalIndex < 0) {
+                                mainIntervalIndex = 1 
+                                sec[mainIntervalIndex].style.display = "block" 
+                                clearInterval(reversedInterval);
+                                mainInterval = setInterval(begin, mainIntervalTimer);
                             } else {
-                                sec[aked].style.display = "block";
+                                sec[mainIntervalIndex].style.display = "block";
                             }
-                        }, k2);
+                        },550);
                         
                     } 
                     else {
-                        sec[aked].style.display = "block";
+                        sec[mainIntervalIndex].style.display = "block";
                     }
                 }
 
                 
 
-                fb.addEventListener("click", function () {
-                    ad[1].play();
-                    s.style.display = "none";
-                    lb.style.display = "inline-block";
-                    lb2.style.display = "inline-block";
+                startGameButton.addEventListener("click", function () {
+                    aud[1].play();
+                    startGameButton.style.display = "none";
+                    label.style.display = "inline-block";
+                    label2.style.display = "inline-block";
                     sec[0].style.display = "block";
-                    lb2.textContent = "0/50";
+                    label2.textContent = "0/50";
 
-                    if (!isIntervalRunning) {
-                        strt = setInterval(begin, k);
-                    }
+                    
+                    mainInterval = setInterval(begin, mainIntervalTimer);
+                    
                 });
             }
 
             function setupMedium(){
                 for(let i = 0 ; i < sec.length ; i++){
 
-                    lb2.textContent = ck + "/50"
+                    label2.textContent = clicks + "/50"
 
-                    clk[i].addEventListener("click", function(){
-                        ck++;
-                        ad[0].play();
-                        lb2.textContent = ck + "/50"
+                    button[i].addEventListener("click", function(){
+                        clicks++;
+                        aud[0].play();
+                        label2.textContent = clicks + "/50"
                         sec[i].style.display = "none"
 
-                        if(ck == 50){
+                        if(clicks == 50){
                             sec[i].style.display = "none"
-                            ad[1].pause()
-                            clearInterval(strt);
-                            lb.style.display ="none"
-                            lb2.style.display = "none"
+                            aud[1].pause()
+                            clearInterval(mainInterval);
+                            label.style.display ="none"
+                            label2.style.display = "none"
                             h.style.display = "block"
                             h2.style.display = "block"
-                            ad[3].play()
-                            ad[2].play()
+                            aud[3].play()
+                            aud[2].play()
 
-                            ad[2].addEventListener("ended",function(){
+                            aud[2].addEventListener("ended",function(){
 
                                 h.style.display = "none"
                                 h2.style.display = "none"
 
-                                int = setInterval(function(){
+                                pInterval= setInterval(function(){
                                     
 
-                                    v[taked].style.display = "none"
+                                    p[pIntervalIndex].style.display = "none"
                                     
-                                    taked ++
+                                    pIntervalIndex++
 
-                                    if(taked == v.length){
+                                    if(pIntervalIndex == p.length){
                                         window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
                                     }
 
                                     else
-                                        v[taked].style.display ="block"
+                                        p[pIntervalIndex].style.display ="block"
                                 },200)
 
                     })         
                     }})
 
 
-                    ad[1].addEventListener("ended",function(){  
+                    aud[1].addEventListener("ended",function(){  
                         sec[i].style.display = "none"
-                        ad[1].pause()
-                        clearInterval(strt);
-                        clearInterval(strt2);
-                        lb.style.display ="none"
-                        lb2.style.display = "none"
+                        aud[1].pause()
+                        clearInterval(mainInterval);
+                        clearInterval(reversedInterval);
+                        label.style.display ="none"
+                        label2.style.display = "none"
                         vid.style.display = "block"
                         vid.play();
                         vid.addEventListener("ended",function(){
                                 
-                            resbt.style.display ="block"
-                            end.style.display ="block"
+                            restartGameButton.style.display ="block"
+                            endGameButton.style.display ="block"
 
-                            resbt.addEventListener("click", function(){
-                                resbt.style.display ="none"
-                                end.style.display ="none"
+                            restartGameButton.addEventListener("click", function(){
+                                restartGameButton.style.display ="none"
+                                endGameButton.style.display ="none"
                                 vid.style.display = "none"
-                                ad[4].play()
+                                aud[4].play()
                                 location.reload()
                             })
-                            end.addEventListener("click", function(){
-                                resbt.style.display ="none"
-                                end.style.display ="none"
+                            endGameButton.addEventListener("click", function(){
+                                restartGameButton.style.display ="none"
+                                endGameButton.style.display ="none"
                                 vid.style.display = "none"
-                                ad[4].play()
+                                aud[4].play()
                                 window.close()
                             })
 
@@ -837,34 +826,30 @@
 
                     } 
 
-                    fb.addEventListener("click", function(){
+                    startGameButton.addEventListener("click", function(){
 
-                    ad[1].play();
-                    s.style.display = "none"
-                    lb.style.display ="inline-block"
-                    lb2.style.display = "inline-block"
+                    aud[1].play();
+                    startGameButton.style.display = "none"
+                    label.style.display ="inline-block"
+                    label2.style.display = "inline-block"
                     sec[0].style.display = "block"
 
+                    mainInterval = setInterval(function(){
 
-                    if (!isIntervalRunning){
+                    
+                        sec[mainIntervalIndex].style.display = "none"
+                        mainIntervalIndex++;
 
-
-                        strt = setInterval(function(){
-
-                        
-                            sec[aked].style.display = "none"
-                            aked++;
-
-                            if (aked == sec.length) {
-                                sec[0].style.display = "block";
-                                aked = 0;
-                            } 
-                            else {
-                                
-                                sec[aked].style.display = "block";
-                            } 
-                        },k)
-                    }
+                        if (mainIntervalIndex == sec.length) {
+                            sec[0].style.display = "block";
+                            mainIntervalIndex = 0;
+                        } 
+                        else {
+                            
+                            sec[mainIntervalIndex].style.display = "block";
+                        } 
+                    },mainIntervalTimer)
+                    
 
                     })
             }
