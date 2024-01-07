@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width">
         <style>
             *{
                 margin: 0;
@@ -26,9 +28,10 @@
             button{
                 border: 5px solid gray;
                 background-color: rgb(33, 46, 158);
-                padding: 20px;
+                padding: 25px;
                 font-size: xx-large;
                 border-radius: 20px;
+                user-select: none;
             }
             
             button:hover{
@@ -156,25 +159,19 @@
 
             #clic{
                 margin-left: 40%;
-                /* position: absolute;
-                left: 41%;
-                top: 2%; */
                 color:gold;
                 font-size: 60px;
                 font-weight: bold;
                 display: none;
+                user-select: none;
             }
             
             #clik{
-                /* margin-left: 50%; */
-                /* margin: 10px auto; */
-                /* position: absolute;
-                left: 53%;
-                top: 2%; */
                 color:gold;
                 font-size: 60px;
                 font-weight: bold;
                 display: none;
+                user-select: none;
             }
 
             #Difficulty-section{
@@ -288,11 +285,9 @@
         <audio src="aud/mediump.mp3" type="audio/mpeg" preload="metadata" ></audio>
         <audio src="aud/lowp.mp3" type="audio/mpeg" preload="metadata" ></audio>
 
-        <div id="cont">
-            <button id="beg">Begin Game</button>
-        </div>
         
-
+        <button id="beg">Begin Game</button>
+        
         <div id="Difficulty-section">
             <h3 class="firsth">Choose Your Difficulty</h1>
             <nav>
@@ -408,6 +403,8 @@
             let mainIntervalTimer = 700
             let reversedIntervalTimer = 600
             let clicks = 0
+            let difficultyChoosen 
+            let lastClickTime = 0
 
             enterGameButton.addEventListener("click", function(){
                 aud[4].play()
@@ -451,7 +448,8 @@
                 startGameButton.style.display = "block"
                 aud[4].pause()
                 aud[7].play()
-                setupMedium();
+                difficultyChoosen = "medium"
+                setupGame();
               
             })
             
@@ -461,7 +459,9 @@
                 startGameButton.style.display = "block"
                 aud[4].pause()
                 aud[6].play()
-                setupHard();
+                difficultyChoosen = "hard"
+                setupGame();
+                
             })
             
             difficultyChoice[2].addEventListener("click", function(){
@@ -470,297 +470,31 @@
                 startGameButton.style.display = "block"
                 aud[4].pause()
                 aud[5].play()
-                setupPagon();
+                difficultyChoosen = "pagon"
+                setupGame();
+                
             })
 
 
-            function setupHard(){
+           
+            function setupGame(){
                 for(let i = 0 ; i < sec.length ; i++){
 
-
                     button[i].addEventListener("click", function(){
+                        const currentTime = new Date().getTime();
+                        if (currentTime - lastClickTime > 0) {
+                            lastClickTime = currentTime;
+                        }
                         clicks++;
                         aud[0].play();
-                        label2.textContent = clicks + "/" + maxCounter 
+                        label2.textContent = clicks + "/" + maxCounter
                         sec[i].style.display = "none"
 
                         if(clicks == maxCounter){
                             sec[i].style.display = "none"
                             aud[1].pause()
                             clearInterval(mainInterval);
-                            label.style.display ="none"
-                            label2.style.display = "none"
-                            h.style.display = "block"
-                            h2.style.display = "block"
-                            aud[3].play()
-                            aud[2].play()
-
-                            aud[2].addEventListener("ended",function(){
-
-                                h.style.display = "none"
-                                h2.style.display = "none"
-
-                                pInterval= setInterval(function(){
-                                    
-
-                                    p[pIntervalIndex].style.display = "none"
-                                    
-                                    pIntervalIndex++
-
-                                    if(pIntervalIndex == p.length){
-                                        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
-                                    }
-
-                                    else
-                                        p[pIntervalIndex].style.display ="block"
-                                },200)
-                    
-                    })         
-                }})
-                    
-                    
-                    aud[1].addEventListener("ended",function(){  
-                        sec[i].style.display = "none"
-                        aud[1].pause()
-                        clearInterval(mainInterval);
-                        clearInterval(reversedInterval);
-                        label.style.display = "none"
-                        label2.style.display = "none"
-                        vid.style.display = "block"
-                        vid.play();
-                        vid.addEventListener("ended",function(){
-                            restartGameButton.style.display ="block"
-                            endGameButton.style.display ="block"
-
-                            restartGameButton.addEventListener("click", function(){
-                                restartGameButton.style.display ="none"
-                                endGameButton.style.display ="none"
-                                vid.style.display = "none"
-                                aud[4].play()
-                                location.reload()
-                            })
-                            
-                            endGameButton.addEventListener("click", function(){
-                                restartGameButton.style.display ="none"
-                                endGameButton.style.display ="none"
-                                vid.style.display = "none"
-                                aud[4].play()
-                                window.close()
-                            })
-                            
-
-                        })
-                        })
-                
-                } 
-
-
-                function begin() {
-                    if (sec[mainIntervalIndex].style.display != "none") {
-                        sec[mainIntervalIndex].style.display = "none";
-                        maxCounter++;
-                        label2.textContent = clicks + "/" + maxCounter;
-                    }
-
-                    mainIntervalIndex++;
-
-                    if (mainIntervalIndex == sec.length) {
-                        mainIntervalIndex = sec.length - 2 ;
-                        sec[mainIntervalIndex].style.display = "block" 
-                        clearInterval(mainInterval);
-
-                
-                        reversedInterval = setInterval(function () {
-                            if (sec[mainIntervalIndex].style.display != "none") {
-                                sec[mainIntervalIndex].style.display = "none";
-                                maxCounter++;
-                                label2.textContent = clicks + "/" + maxCounter;
-                            }
-                            mainIntervalIndex--;
-
-                            if (mainIntervalIndex < 0) {
-                                mainIntervalIndex = 1 
-                                sec[mainIntervalIndex].style.display = "block" 
-                                clearInterval(reversedInterval);
-                                mainInterval = setInterval(begin, mainIntervalTimer);
-                            } else {
-                                sec[mainIntervalIndex].style.display = "block";
-                            }
-                        }, reversedIntervalTimer);
-                        
-                    } 
-                    else {
-                        sec[mainIntervalIndex].style.display = "block";
-                    }
-                }
-
-                
-
-                startGameButton.addEventListener("click", function () {
-                    aud[1].play();
-                    startGameButton.style.display = "none";
-                    label.style.display = "inline-block";
-                    label2.style.display = "inline-block";
-                    sec[0].style.display = "block";
-                    label2.textContent = "0/50";
-
-                    
-                    mainInterval = setInterval(begin, mainIntervalTimer);
-                    
-                });
-            }
-            
-            function setupPagon(){
-                for(let i = 0 ; i < sec.length ; i++){
-
-
-                    button[i].addEventListener("click", function(){
-                        clicks++;
-                        aud[0].play();
-                        label2.textContent = clicks + "/" + maxCounter 
-                        sec[i].style.display = "none"
-
-                        if(clicks == maxCounter){
-                            sec[i].style.display = "none"
-                            aud[1].pause()
-                            clearInterval(mainInterval);
-                            label.style.display ="none"
-                            label2.style.display = "none"
-                            h.style.display = "block"
-                            h2.style.display = "block"
-                            aud[3].play()
-                            aud[2].play()
-
-                            aud[2].addEventListener("ended",function(){
-
-                                h.style.display = "none"
-                                h2.style.display = "none"
-
-                                pInterval= setInterval(function(){
-                                    
-
-                                    p[pIntervalIndex].style.display = "none"
-                                    
-                                    pIntervalIndex ++
-
-                                    if(pIntervalIndex == p.length){
-                                        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
-                                    }
-
-                                    else
-                                        p[pIntervalIndex].style.display ="block"
-                                },200)
-                    
-                    })         
-                }})
-                    
-                    
-                    aud[1].addEventListener("ended",function(){  
-                        sec[i].style.display = "none"
-                        aud[1].pause()
-                        clearInterval(mainInterval);
-                        clearInterval(reversedInterval);
-                        label.style.display = "none"
-                        label2.style.display = "none"
-                        vid.style.display = "block"
-                        vid.play();
-                        vid.addEventListener("ended",function(){
-                            restartGameButton.style.display ="block"
-                            endGameButton.style.display ="block"
-
-                            restartGameButton.addEventListener("click", function(){
-                                restartGameButton.style.display ="none"
-                                endGameButton.style.display ="none"
-                                vid.style.display = "none"
-                                aud[4].play()
-                                location.reload()
-                            })
-                            
-                            endGameButton.addEventListener("click", function(){
-                                restartGameButton.style.display ="none"
-                                endGameButton.style.display ="none"
-                                vid.style.display = "none"
-                                aud[4].play()
-                                window.close()
-                            })
-                            
-
-                        })
-                        })
-                
-                } 
-
-
-                function begin() {
-                    if (sec[mainIntervalIndex].style.display != "none") {
-                        sec[mainIntervalIndex].style.display = "none";
-                        maxCounter+=2;
-                        label2.textContent = clicks + "/" + maxCounter;
-                    }
-
-                    mainIntervalIndex++;
-
-                    if (mainIntervalIndex == sec.length) {
-                        mainIntervalIndex = sec.length - 2 ;
-                        sec[mainIntervalIndex].style.display = "block" 
-                        clearInterval(mainInterval);
-
-                
-                        reversedInterval = setInterval(function () {
-                            if (sec[mainIntervalIndex].style.display != "none") {
-                                sec[mainIntervalIndex].style.display = "none";
-                                maxCounter+=2;
-                                label2.textContent = clicks + "/" + maxCounter;
-                            }
-                            mainIntervalIndex--;
-
-                            if (mainIntervalIndex < 0) {
-                                mainIntervalIndex = 1 
-                                sec[mainIntervalIndex].style.display = "block" 
-                                clearInterval(reversedInterval);
-                                mainInterval = setInterval(begin, mainIntervalTimer);
-                            } else {
-                                sec[mainIntervalIndex].style.display = "block";
-                            }
-                        },550);
-                        
-                    } 
-                    else {
-                        sec[mainIntervalIndex].style.display = "block";
-                    }
-                }
-
-                
-
-                startGameButton.addEventListener("click", function () {
-                    aud[1].play();
-                    startGameButton.style.display = "none";
-                    label.style.display = "inline-block";
-                    label2.style.display = "inline-block";
-                    sec[0].style.display = "block";
-                    label2.textContent = "0/50";
-
-                    
-                    mainInterval = setInterval(begin, mainIntervalTimer);
-                    
-                });
-            }
-
-            function setupMedium(){
-                for(let i = 0 ; i < sec.length ; i++){
-
-                    label2.textContent = clicks + "/50"
-
-                    button[i].addEventListener("click", function(){
-                        clicks++;
-                        aud[0].play();
-                        label2.textContent = clicks + "/50"
-                        sec[i].style.display = "none"
-
-                        if(clicks == 50){
-                            sec[i].style.display = "none"
-                            aud[1].pause()
-                            clearInterval(mainInterval);
+                            clearInterval(reversedInterval);
                             label.style.display ="none"
                             label2.style.display = "none"
                             h.style.display = "block"
@@ -826,33 +560,143 @@
 
                     } 
 
-                    startGameButton.addEventListener("click", function(){
+                    if(difficultyChoosen == "pagon"){
+                        function begin() {
+                            if (sec[mainIntervalIndex].style.display != "none") {
+                                sec[mainIntervalIndex].style.display = "none";
+                                maxCounter+=2;
+                                label2.textContent = clicks + "/" + maxCounter;
+                            }
 
-                    aud[1].play();
-                    startGameButton.style.display = "none"
-                    label.style.display ="inline-block"
-                    label2.style.display = "inline-block"
-                    sec[0].style.display = "block"
+                            mainIntervalIndex++;
 
-                    mainInterval = setInterval(function(){
+                            if (mainIntervalIndex == sec.length) {
+                                mainIntervalIndex = sec.length - 2 ;
+                                sec[mainIntervalIndex].style.display = "block" 
+                                clearInterval(mainInterval);
 
-                    
-                        sec[mainIntervalIndex].style.display = "none"
-                        mainIntervalIndex++;
+                
+                                reversedInterval = setInterval(function () {
+                                    if (sec[mainIntervalIndex].style.display != "none") {
+                                        sec[mainIntervalIndex].style.display = "none";
+                                        maxCounter+=2;
+                                        label2.textContent = clicks + "/" + maxCounter;
+                                    }
+                                    mainIntervalIndex--;
 
-                        if (mainIntervalIndex == sec.length) {
+                                    if (mainIntervalIndex < 0) {
+                                        mainIntervalIndex = 1 
+                                        sec[mainIntervalIndex].style.display = "block" 
+                                        clearInterval(reversedInterval);
+                                        mainInterval = setInterval(begin, mainIntervalTimer);
+                                    }   
+                                    else {
+                                        sec[mainIntervalIndex].style.display = "block";
+                                    }
+                                },550);
+                        
+                            } 
+                            else {
+                                sec[mainIntervalIndex].style.display = "block";
+                            }
+                    }
+
+                
+
+                        startGameButton.addEventListener("click", function () {
+                            aud[1].play();
+                            startGameButton.style.display = "none";
+                            label.style.display = "inline-block";
+                            label2.style.display = "inline-block";
                             sec[0].style.display = "block";
-                            mainIntervalIndex = 0;
-                        } 
-                        else {
-                            
-                            sec[mainIntervalIndex].style.display = "block";
-                        } 
-                    },mainIntervalTimer)
-                    
+                            label2.textContent = "0/50";
 
-                    })
-            }
+                            
+                            mainInterval = setInterval(begin, mainIntervalTimer);
+                            
+                        });
+                    }
+
+                    else if(difficultyChoosen == "hard"){
+                        function begin() {
+                            if (sec[mainIntervalIndex].style.display != "none") {
+                                sec[mainIntervalIndex].style.display = "none";
+                                maxCounter++;
+                                label2.textContent = clicks + "/" + maxCounter;
+                            }
+
+                            mainIntervalIndex++;
+
+                            if (mainIntervalIndex == sec.length) {
+                                mainIntervalIndex = sec.length - 2 ;
+                                sec[mainIntervalIndex].style.display = "block" 
+                                clearInterval(mainInterval);
+
+                        
+                                reversedInterval = setInterval(function () {
+                                    if (sec[mainIntervalIndex].style.display != "none") {
+                                        sec[mainIntervalIndex].style.display = "none";
+                                        maxCounter++;
+                                        label2.textContent = clicks + "/" + maxCounter;
+                                    }
+                                    mainIntervalIndex--;
+
+                                    if (mainIntervalIndex < 0) {
+                                        mainIntervalIndex = 1 
+                                        sec[mainIntervalIndex].style.display = "block" 
+                                        clearInterval(reversedInterval);
+                                        mainInterval = setInterval(begin, mainIntervalTimer);
+                                    } else {
+                                        sec[mainIntervalIndex].style.display = "block";
+                                    }
+                                }, reversedIntervalTimer);
+                                
+                            } 
+                            else {
+                                sec[mainIntervalIndex].style.display = "block";
+                            }
+                        }
+                        startGameButton.addEventListener("click", function(){
+
+                            aud[1].play();
+                            startGameButton.style.display = "none"
+                            label.style.display ="inline-block"
+                            label2.style.display = "inline-block"
+                            sec[0].style.display = "block"
+                            label2.textContent = "0/50";
+
+                            mainInterval = setInterval(begin, mainIntervalTimer);
+                        
+                            })
+                    }
+
+                    else{
+                        startGameButton.addEventListener("click", function(){
+                            aud[1].play();
+                            startGameButton.style.display = "none";
+                            label.style.display = "inline-block";
+                            label2.style.display = "inline-block";
+                            sec[0].style.display = "block";
+                            label2.textContent = "0/50";
+                            
+                            mainInterval = setInterval(function(){
+                        
+                                sec[mainIntervalIndex].style.display = "none"
+                                mainIntervalIndex++;
+
+                                if (mainIntervalIndex == sec.length) {
+                                    sec[0].style.display = "block";
+                                    mainIntervalIndex = 0;
+                                } 
+                                else {
+                                    
+                                    sec[mainIntervalIndex].style.display = "block";
+                                } 
+                            },mainIntervalTimer)
+                        })
+                    }
+                }
+            
            
             
         </script>
