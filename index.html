@@ -441,6 +441,7 @@
 
         <div>
             <video src="./vid/CASE 2_ Animatronics Survival - The Owl Jumpscare (online-video-cutter.com).mp4" width="1300"></video>
+            <video src="vid/y2mate.com - Happy Birthday Confetti_1080p.mp4"></video> 
         </div>
         
 
@@ -448,7 +449,7 @@
         <script>
             let button = document.querySelectorAll('.s')
             let sec = document.querySelectorAll('section')
-            let vid = document.querySelector('video')
+            let vid = document.querySelectorAll('video')
             let aud = document.querySelectorAll('audio')
             let label = document.getElementById('clic')
             let label2 = document.getElementById('clik')
@@ -576,7 +577,7 @@
                         label2.textContent = clicks+ "/" + maxCounter
                         sec[i].style.display = "none"
 
-                        if(clicks == maxCounter){
+                        if(clicks == 2){
                             sec[i].style.display = "none"
                             aud[1].pause()
                             clearInterval(mainInterval);
@@ -587,6 +588,8 @@
                             h2.style.display = "block"
                             aud[3].play()
                             aud[2].play()
+                            vid[1].style.display = "block"
+                            vid[1].play()
 
                             aud[2].addEventListener("ended",function(){
 
@@ -620,9 +623,9 @@
                         clearInterval(reversedInterval);
                         label.style.display ="none"
                         label2.style.display = "none"
-                        vid.style.display = "block"
-                        vid.play();
-                        vid.addEventListener("ended",function(){
+                        vid[0].style.display = "block"
+                        vid[0].play();
+                        vid[0].addEventListener("ended",function(){
                                 
                             restartGameButton.style.display ="block"
                             endGameButton.style.display ="block"
@@ -630,14 +633,14 @@
                             restartGameButton.addEventListener("click", function(){
                                 restartGameButton.style.display ="none"
                                 endGameButton.style.display ="none"
-                                vid.style.display = "none"
+                                vid[0].style.display = "none"
                                 aud[4].play()
                                 difficultySection.style.display = "block"
                             })
                             endGameButton.addEventListener("click", function(){
                                 restartGameButton.style.display ="none"
                                 endGameButton.style.display ="none"
-                                vid.style.display = "none"
+                                vid[0].style.display = "none"
                                 aud[4].play()
                                 window.close()
                             })
