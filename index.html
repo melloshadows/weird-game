@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width = device-width">
+        <title>fast click</title>
         <style>
             *{
                 margin: 0;
@@ -16,7 +17,9 @@
             video{
                 display: block;
                 display: none;
-                margin: 0 auto ;
+                width: 100%;
+                height: 100%;
+
             }
 
             section{
@@ -32,6 +35,7 @@
                 font-size: xx-large;
                 border-radius: 20px;
                 user-select: none;
+                transition: all 0.3s;
             }
             
             button:hover{
@@ -153,7 +157,8 @@
             
             img{
                 position: absolute;
-                z-index: 1;
+                left: 42%;
+                top: 35%;
                 display: none;
             }
 
@@ -176,6 +181,7 @@
 
             #Difficulty-section{
                 display: none;
+                opacity: 0;
             }
             h3{
                 font-size: 120px;
@@ -206,7 +212,7 @@
                 display: block;
                 padding: 35px;
                 cursor: pointer;
-                
+                transition: all 0.3s;
             }
             li:last-child{
                 border-top: 2px solid red;
@@ -271,6 +277,69 @@
                 background-color: rgb(50, 50, 155);
             }
 
+            @keyframes appearslowly {
+                from{
+                    opacity: 0;
+                }
+
+                to{
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes appear {
+                from{
+                    opacity: 0;
+                }
+
+                to{
+                    opacity: 1;
+                    display: block;
+                }
+            }
+            
+            @keyframes hidesec{
+                from{
+                    opacity: 1;
+                }
+
+                to{
+                    opacity: 0;
+                    display: none;
+                }
+            }
+            
+            @keyframes cool{
+                0%{
+                    transform: rotate(10deg) translateX(-10px);
+                }
+                50%{
+                    transform: rotate(-10deg) translateX(10px);
+                }
+
+                100%{
+                    transform: rotate(10deg) translateX(-10px);
+                }
+            }
+            .cool{
+                animation: cool 1s infinite;
+            }
+
+            .visible{
+                animation: appearslowly 0.9s infinite;
+            }
+        
+            .appear{
+                animation: appearslowly 0.7s forwards;
+                
+            }
+            .hidesec{
+                animation: hidesec 0.5s forwards;
+            }
+            .appr{
+                animation: appear 1s forwards;
+            }
+
 
         </style>
     </head>
@@ -286,7 +355,7 @@
         <audio src="aud/lowp.mp3" type="audio/mpeg" preload="metadata" ></audio>
 
         
-        <button id="beg">Begin Game</button>
+        <button class="cool" id="beg">Begin Game</button>
         
         <div id="Difficulty-section">
             <h3 class="firsth">Choose Your Difficulty</h1>
@@ -367,7 +436,8 @@
             <p>just</p>
             <p>got</p>
             <p>rickroll'd</p>
-        
+
+            <img src="imgs/rickroll.avif" height="300px" width="300px">
 
         <div>
             <video src="./vid/CASE 2_ Animatronics Survival - The Owl Jumpscare (online-video-cutter.com).mp4" width="1300"></video>
@@ -386,13 +456,13 @@
             let p = document.querySelectorAll("p")
             let h = document.querySelector("h1")
             let h2 = document.querySelector("h2")
-            let h3 = document.querySelector("h3")
             let h4 = document.querySelector("h4")
             let difficultyChoice = document.querySelectorAll("li")
             let difficultySection = document.getElementById("Difficulty-section")
             let enterGameButton = document.getElementById("beg")
             let restartGameButton = document.getElementById("res")
             let endGameButton = document.getElementById("end")
+            let image = document.querySelector("img")
         
             let pInterval
             let maxCounter = 50 
@@ -406,46 +476,62 @@
             let difficultyChoosen 
             let lastClickTime = 0
 
+
+            enterGameButton.addEventListener("mouseover", function(){
+                enterGameButton.classList.remove("cool")
+            })
+            
+            enterGameButton.addEventListener("mouseout", function(){
+                enterGameButton.classList.add("cool")
+            })
+
             enterGameButton.addEventListener("click", function(){
                 aud[4].play()
-                enterGameButton.style.display = "none"
-                difficultySection.style.display="block"
+                enterGameButton.classList.add("hidesec")
+                difficultySection.style.display = "block"
+                difficultySection.classList.add("appear")
             })
 
             
             difficultyChoice[0].addEventListener("mouseover", function(){
+                h4.classList.add ("visible")
                 h4.textContent = "Just Your Normal Difficulty"
                
             })
             
             difficultyChoice[1].addEventListener("mouseover", function(){
+                h4.classList.add ("visible")
                 h4.textContent = "You Want To Spice Things Up"
                 
             })
             
             difficultyChoice[2].addEventListener("mouseover", function(){
+                h4.classList.add ("visible")
                 h4.textContent = "You're Simply INSANE!"
                 
             })
             
             
             difficultyChoice[0].addEventListener("mouseout", function(){
+                h4.classList.remove ("visible")
                 h4.textContent = ""
             })
         
             difficultyChoice[1].addEventListener("mouseout", function(){
+                h4.classList.remove ("visible")
                 h4.textContent = ""
             })
             
             difficultyChoice[2].addEventListener("mouseout", function(){
+                h4.classList.remove ("visible")
                 h4.textContent = ""
             })
             
             
             difficultyChoice[0].addEventListener("click", function(){
-                difficultySection.style.display = "none"
-                h3.style.display ="none" 
-                startGameButton.style.display = "block"
+                difficultySection.classList.add("hidesec") 
+                startGameButton.style.display = "block"           
+                startGameButton.classList.add("appr")
                 aud[4].pause()
                 aud[7].play()
                 difficultyChoosen = "medium"
@@ -454,9 +540,9 @@
             })
             
             difficultyChoice[1].addEventListener("click", function(){
-                difficultySection.style.display = "none"
-                h3.style.display = "none" 
+                difficultySection.classList.add("hidesec")
                 startGameButton.style.display = "block"
+                startGameButton.classList.add("appr")
                 aud[4].pause()
                 aud[6].play()
                 difficultyChoosen = "hard"
@@ -465,9 +551,9 @@
             })
             
             difficultyChoice[2].addEventListener("click", function(){
-                difficultySection.style.display = "none"
-                h3.style.display = "none" 
-                startGameButton.style.display = "block"
+                difficultySection.classList.add("hidesec")    
+                startGameButton.style.display = "block"        
+                startGameButton.classList.add("appr")
                 aud[4].pause()
                 aud[5].play()
                 difficultyChoosen = "pagon"
@@ -487,7 +573,7 @@
                         }
                         clicks++;
                         aud[0].play();
-                        label2.textContent = clicks + "/" + maxCounter
+                        label2.textContent = clicks+ "/" + maxCounter
                         sec[i].style.display = "none"
 
                         if(clicks == maxCounter){
@@ -515,6 +601,7 @@
                                     pIntervalIndex++
 
                                     if(pIntervalIndex == p.length){
+                                        image.style.display = "block"
                                         window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_self");
                                     }
 
@@ -545,7 +632,7 @@
                                 endGameButton.style.display ="none"
                                 vid.style.display = "none"
                                 aud[4].play()
-                                location.reload()
+                                difficultySection.style.display = "block"
                             })
                             endGameButton.addEventListener("click", function(){
                                 restartGameButton.style.display ="none"
@@ -606,6 +693,7 @@
                         startGameButton.addEventListener("click", function () {
                             aud[1].play();
                             startGameButton.style.display = "none";
+                            startGameButton.classList.remove("appr")
                             label.style.display = "inline-block";
                             label2.style.display = "inline-block";
                             sec[0].style.display = "block";
@@ -659,6 +747,7 @@
                         startGameButton.addEventListener("click", function(){
 
                             aud[1].play();
+                            startGameButton.classList.remove("appr")
                             startGameButton.style.display = "none"
                             label.style.display ="inline-block"
                             label2.style.display = "inline-block"
@@ -673,6 +762,7 @@
                     else{
                         startGameButton.addEventListener("click", function(){
                             aud[1].play();
+                            startGameButton.classList.remove("appr")
                             startGameButton.style.display = "none";
                             label.style.display = "inline-block";
                             label2.style.display = "inline-block";
