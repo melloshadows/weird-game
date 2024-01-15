@@ -278,12 +278,16 @@
             }
 
             @keyframes appearslowly {
-                from{
+                0%{
                     opacity: 0;
                 }
 
-                to{
+                50%{
                     opacity: 1;
+                }
+
+                100%{
+                    opacity: 0;
                 }
             }
             
@@ -322,7 +326,7 @@
                 }
             }
             .cool{
-                animation: cool 1s infinite;
+                animation: cool 1.1s infinite;
             }
 
             .visible{
@@ -330,11 +334,11 @@
             }
         
             .appear{
-                animation: appearslowly 0.7s forwards;
+                animation: appear 2s forwards;
                 
             }
             .hidesec{
-                animation: hidesec 0.5s forwards;
+                animation: hidesec 1s forwards;
             }
             .appr{
                 animation: appear 1s forwards;
@@ -353,6 +357,7 @@
         <audio src="aud/highp.mp3" type="audio/mpeg" preload="metadata" ></audio>
         <audio src="aud/mediump.mp3" type="audio/mpeg" preload="metadata" ></audio>
         <audio src="aud/lowp.mp3" type="audio/mpeg" preload="metadata" ></audio>
+        <audio src="aud/y2mate.com - Confetti Party Popper  Free Sound Effect.mp3" type="audio/mpeg" preload="metadata" ></audio>
 
         
         <button class="cool" id="beg">Begin Game</button>
@@ -530,6 +535,7 @@
             
             
             difficultyChoice[0].addEventListener("click", function(){
+                difficultySection.classList.remove("appear")
                 difficultySection.classList.add("hidesec") 
                 startGameButton.style.display = "block"           
                 startGameButton.classList.add("appr")
@@ -541,6 +547,7 @@
             })
             
             difficultyChoice[1].addEventListener("click", function(){
+                difficultySection.classList.remove("appear")
                 difficultySection.classList.add("hidesec")
                 startGameButton.style.display = "block"
                 startGameButton.classList.add("appr")
@@ -552,6 +559,7 @@
             })
             
             difficultyChoice[2].addEventListener("click", function(){
+                difficultySection.classList.remove("appear")
                 difficultySection.classList.add("hidesec")    
                 startGameButton.style.display = "block"        
                 startGameButton.classList.add("appr")
@@ -588,6 +596,7 @@
                             h2.style.display = "block"
                             aud[3].play()
                             aud[2].play()
+                            aud[8].play()
                             vid[1].style.display = "block"
                             vid[1].play()
 
@@ -635,11 +644,11 @@
                                 endGameButton.style.display ="none"
                                 vid[0].style.display = "none"
                                 aud[4].play()
-                                difficultySection.style.display = "block"
+                                location.reload()
                             })
                             endGameButton.addEventListener("click", function(){
-                                restartGameButton.style.display ="none"
-                                endGameButton.style.display ="none"
+                                restartGameButton.style.display = "none"
+                                endGameButton.style.display = "none"
                                 vid[0].style.display = "none"
                                 aud[4].play()
                                 window.close()
@@ -794,6 +803,5 @@
             
         </script>
     </body>
-
 
 </html>
