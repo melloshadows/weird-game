@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+video {
+    display: block;
+    display: none;
+    width: 100%;
+    height: 100%;
+
+}
+
+section {
+    box-shadow: 0 0 10px 5px red, 0 0 20px 10px red, 0 0 30px 15px red;
+    border-radius: 20px;
+    display: none;
+}
+
+button {
+    border: 5px solid gray;
+    background-color: rgb(33, 46, 158);
+    padding: 25px;
+    font-size: xx-large;
+    border-radius: 20px;
+    user-select: none;
+    transition: all 0.3s;
+}
+
+button:hover {
+    border: 2px solid gray;
+    transform: scale(1.1);
+    background-color: rgb(82, 82, 140);
+}
+
+#s1 {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    box-shadow: 0 0 10px 5px red, 0 0 20px 10px red, 0 0 30px 15px red;
+    border-radius: 20px;
+    display: none;
+}
+
+#s2 {
+    position: absolute;
+    left: 85%;
+    top: 5%;
+
+}
+
+#s3 {
+    position: absolute;
+    top: 88%;
+    left: 2%;
+
+}
+
+#s4 {
+    position: absolute;
+    top: 85%;
+    left: 80%;
+
+}
+
+#s5 {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+
+}
+
+#s6 {
+    position: absolute;
+    top: 88%;
+    left: 45%;
+
+}
+
+#s7 {
+    position: absolute;
+    top: 45%;
+    left: 2%;
+
+}
+
+#s8 {
+    position: absolute;
+    left: 85%;
+    top: 45%;
+
+}
+
+#s9 {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+
+}
+
+#s10 {
+    position: absolute;
+    left: 65%;
+    top: 65%;
+
+}
+
+#s11 {
+    position: absolute;
+    left: 65%;
+    top: 35%;
+
+}
+
+#s12 {
+    position: absolute;
+    left: 45%;
+    top: 45%;
+
+}
+
+p {
+    position: absolute;
+    top: 41%;
+    left: 43%;
+    font-size: 60px;
+    color: white;
+    display: none;
+}
+
+h1 {
+    font-size: 60px;
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 30%;
+    display: none;
+}
+
+h2 {
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    top: 45%;
+    left: 41%;
+    display: none;
+}
+
+
+img {
+    position: absolute;
+    left: 42%;
+    top: 35%;
+    display: none;
+}
+
+#clic {
+    margin-left: 40%;
+    color: gold;
+    font-size: 60px;
+    font-weight: bold;
+    display: none;
+    user-select: none;
+}
+
+#clik {
+    color: gold;
+    font-size: 60px;
+    font-weight: bold;
+    display: none;
+    user-select: none;
+}
+
+#Difficulty-section {
+    display: none;
+    opacity: 0;
+}
+
+h3 {
+    font-size: 120px;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}
+
+nav {
+    color: white;
+    border: 4px red solid;
+    border-radius: 20px;
+    width: 33%;
+    font-size: 43px;
+    margin: 50px auto;
+    line-height: 5rem;
+    font-family: 'Press Start 2P', cursive;
+
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    background-color: darkblue;
+    border-radius: 17px;
+}
+
+li {
+    display: block;
+    padding: 35px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+li:last-child {
+    border-top: 2px solid red;
+}
+
+li:last-child:hover {
+    background-color: rgb(50, 50, 155);
+    border-radius: 0 0 20px 20px;
+}
+
+li:first-child:hover {
+    background-color: rgb(50, 50, 155);
+    border-radius: 20px 20px 0 0;
+}
+
+#Difficulty-info {
+    height: 250px;
+    width: 300px;
+    border: 2px solid white;
+    position: absolute;
+    top: 42%;
+    left: 70%;
+    color: white;
+    font-size: 21px;
+    padding: 30px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+h4 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#beg {
+    position: absolute;
+    left: 42%;
+    top: 45%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; */
+}
+
+#res {
+    display: none;
+    position: absolute;
+    font-size: x-large;
+    font-weight: bolder;
+    top: 85%;
+    left: 12%;
+    padding-left: 95px;
+    padding-right: 95px;
+    z-index: 1;
+}
+
+#end {
+    display: none;
+    position: absolute;
+    top: 87%;
+    left: 70%;
+    font-size: x-large;
+    font-weight: bolder;
+    padding: 20px;
+    padding-left: 65px;
+    padding-right: 65px;
+    z-index: 1;
+}
+
+h5 {
+    display: block;
+    font-size: 21px;
+}
+
+#li3 {
+    border-top: 2px solid red;
+}
+
+#li3:hover {
+    background-color: rgb(50, 50, 155);
+}
+
+@keyframes fade-in-and-out {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        display: block;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes vibrate {
+    0% {
+        transform: rotate(10deg) translateX(-10px);
+    }
+
+    50% {
+        transform: rotate(-10deg) translateX(10px);
+    }
+
+    100% {
+        transform: rotate(10deg) translateX(-10px);
+    }
+}
+
+.vibrate {
+    animation: vibrate 1.1s infinite;
+}
+
+.flashing {
+    animation: fade-in-and-out 0.9s infinite;
+}
+
+.fade-in {
+    animation: fade-in 2s forwards;
+
+}
+
+.fade-out {
+    animation: fade-out 1s forwards;
+}
+
+.appr {
+    animation: fade-in 1s forwards;
+}
