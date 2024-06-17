@@ -255,7 +255,7 @@ img {
         top: 150%;
     }
     to{
-        top: 270px;
+        top: 220px;
     }
 }
 @keyframes moving-up {
@@ -263,7 +263,7 @@ img {
         top: 150%;
     }
     to{
-        top: 270px;
+        top: 220px;
     }
 }
 .move-up{
