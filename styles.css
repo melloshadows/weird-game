@@ -177,6 +177,71 @@ img {
     user-select: none;
 }
 
+.info{
+    color: white;
+    font-size: 40px;
+    margin: 0 20px 20px 20px;
+    cursor: pointer;
+    width: 30px;
+}
+.info-showed{
+    min-height: 250px;
+    width: 350px;
+    border: 3px solid white;
+    color: white;
+    font-size: x-large;
+    margin: 20px;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    position: absolute;
+    top: 150%;
+    left: 0;
+    overflow: hidden;
+}
+.hev{
+    width: 90px;
+    height: 25px;
+    border-radius: 5px;
+    border:1px solid rgb(31, 31, 181);
+    background-color: rgb(71, 71, 138);
+    color: white;
+    font-size: large;
+    text-align: center;
+    margin: 0 0 3px 20px;
+    opacity: 0;
+}
+
+.jks{
+    display: block;
+    object-fit: contain;
+    left: 50%;
+    top: 74%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes moving-up {
+    from{
+        top: 150%;
+    }
+    to{
+        top: 290px;
+    }
+}
+.move-up{
+    animation: moving-up 0.6s forwards;
+}
+.fading-in{
+    animation: fade 0.3s forwards;
+}
+
 #Difficulty-section {
     display: none;
     opacity: 0;
@@ -196,10 +261,10 @@ nav {
     border-radius: 20px;
     width: 33%;
     font-size: 43px;
-    margin: 50px auto;
+    margin-top: 50px;
+    margin-left: 220px ;
     line-height: 5rem;
     font-family: 'Press Start 2P', cursive;
-
 }
 
 ul {
@@ -230,13 +295,21 @@ li:first-child:hover {
     border-radius: 20px 20px 0 0;
 }
 
+
+.wraping{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #Difficulty-info {
-    height: 250px;
-    width: 300px;
+    max-height: 250px;
+    max-width: 300px;
     border: 2px solid white;
-    position: absolute;
+    margin-left: 50px;
+    /* position: absolute;
     top: 42%;
-    left: 70%;
+    left: 70%; */
     color: white;
     font-size: 21px;
     padding: 30px;

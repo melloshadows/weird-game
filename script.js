@@ -16,6 +16,9 @@ let enterGameButtonContainer = document.getElementById("cont")
 let restartGameButton = document.getElementById("res")
 let endGameButton = document.getElementById("end")
 let image = document.querySelector("img")
+let info = document.querySelector(".info")
+let infoOnHover = document.querySelector(".hev")
+let infoOnClick = document.querySelector(".info-showed")
 
 let pInterval
 let maxCounter = 50
@@ -44,6 +47,22 @@ enterGameButton.addEventListener("click", function () {
     // enterGameButtonContainer.classList.add("fade-out")
     difficultySection.style.display = "block"
     difficultySection.classList.add("fade-in")
+})
+
+info.addEventListener("mouseover", function(){
+    infoOnHover.classList.add("fading-in")
+})
+
+info.addEventListener("mouseout", function(){
+    infoOnHover.classList.remove("fading-in")
+})
+
+info.addEventListener("click", function(){
+    if(infoOnClick.classList.contains("move-up")){
+        infoOnClick.classList.remove("move-up")
+    }
+    else
+        infoOnClick.classList.add("move-up")
 })
 
 
@@ -141,7 +160,7 @@ function setupGame() {
                 vid[1].style.display = "block"
                 vid[1].play()
 
-                aud[2].addEventListener("ended", function () {
+                aud[1].addEventListener("ended", function () {
 
                     h.style.display = "none"
                     h2.style.display = "none"
@@ -202,42 +221,28 @@ function setupGame() {
     }
 
     if (difficultyChoosen == "pagon") {
+
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min) ) + min;
+        }
+
         function begin() {
             if (buttonSection[mainIntervalIndex].style.display != "none") {
                 buttonSection[mainIntervalIndex].style.display = "none";
-                maxCounter += 2;
+                maxCounter += 1;
                 label2.textContent = clicks + "/" + maxCounter;
             }
 
             mainIntervalIndex++;
 
             if (mainIntervalIndex == buttonSection.length) {
-                mainIntervalIndex = buttonSection.length - 2;
-                buttonSection[mainIntervalIndex].style.display = "block"
-                clearInterval(mainInterval);
-
-
-                reversedInterval = setInterval(function () {
-                    if (buttonSection[mainIntervalIndex].style.display != "none") {
-                        buttonSection[mainIntervalIndex].style.display = "none";
-                        maxCounter += 2;
-                        label2.textContent = clicks + "/" + maxCounter;
-                    }
-                    mainIntervalIndex--;
-
-                    if (mainIntervalIndex < 0) {
-                        mainIntervalIndex = 1
-                        buttonSection[mainIntervalIndex].style.display = "block"
-                        clearInterval(reversedInterval);
-                        mainInterval = setInterval(begin, mainIntervalTimer);
-                    }
-                    else {
-                        buttonSection[mainIntervalIndex].style.display = "block";
-                    }
-                }, 550);
-
+                buttonSection[0].style.display = "block";
+                mainIntervalIndex = 0;
             }
+
             else {
+                buttonSection[mainIntervalIndex].style.top = `${getRandomNumber(2,92)}%`
+                buttonSection[mainIntervalIndex].style.left = `${getRandomNumber(1,85)}%`
                 buttonSection[mainIntervalIndex].style.display = "block";
             }
         }
@@ -253,7 +258,7 @@ function setupGame() {
             label2.textContent = "0/50";
 
 
-            mainInterval = setInterval(begin, mainIntervalTimer);
+            mainInterval = setInterval(begin, 650);
 
         });
     }
