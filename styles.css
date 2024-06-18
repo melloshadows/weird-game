@@ -53,22 +53,22 @@ button:hover {
 
 #s2 {
     position: absolute;
-    left: 85%;
+    left: 81%;
     top: 5%;
 
 }
 
 #s3 {
     position: absolute;
-    top: 88%;
+    top: 85%;
     left: 2%;
 
 }
 
 #s4 {
     position: absolute;
-    top: 85%;
-    left: 80%;
+    top: 82%;
+    left: 76%;
 
 }
 
@@ -81,7 +81,7 @@ button:hover {
 
 #s6 {
     position: absolute;
-    top: 88%;
+    top: 85%;
     left: 45%;
 
 }
@@ -200,7 +200,7 @@ img {
     width: 350px;
     border: 3px solid white;
     color: white;
-    font-size: x-large;
+    font-size: 1.5vw;
     margin: 20px;
     text-align: center;
     padding: 10px 0 10px 0;
@@ -208,6 +208,7 @@ img {
     top: 150%;
     left: 0;
     overflow: hidden;
+    user-select: none;
 }
 .hev{
     width: 90px;
@@ -255,7 +256,7 @@ img {
         top: 150%;
     }
     to{
-        top: 220px;
+        top: 16vw;
     }
 }
 @keyframes moving-up {
@@ -263,7 +264,7 @@ img {
         top: 150%;
     }
     to{
-        top: 220px;
+        top: 16vw;
     }
 }
 .move-up{
@@ -281,11 +282,12 @@ img {
 }
 
 h3 {
-    font-size: 120px;
+    font-size: 7vmax;
     text-align: center;
     margin-top: 20px;
     color: white;
     font-family: 'Press Start 2P', cursive;
+    text-shadow: 2.5px 2.5px 2.5px rgb(218, 204, 204);
 }
 
 nav {
@@ -293,11 +295,10 @@ nav {
     border: 4px red solid;
     border-radius: 20px;
     width: 33%;
-    font-size: 43px;
-    margin: 50px auto;
-    line-height: 5rem;
+    font-size: 3vmax;
+    margin: 3.5vmax auto;
+    line-height: 5vmax;
     font-family: 'Press Start 2P', cursive;
-
 }
 
 ul {
@@ -335,6 +336,7 @@ li:first-child:hover {
     position: absolute;
     top: 42%;
     left: 70%;
+    /* transform: translateX(-50%) translateY(-50%); */
     color: white;
     font-size: 21px;
     padding: 30px;
@@ -344,6 +346,7 @@ li:first-child:hover {
 h4 {
     font-size: 30px;
     text-align: center;
+    text-shadow: 1.5px 1.5px 1.5px rgb(218, 204, 204);
 }
 
 #beg {

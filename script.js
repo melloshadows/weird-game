@@ -60,9 +60,12 @@ info.addEventListener("mouseout", function(){
 info.addEventListener("click", function(){
     if(infoOnClick.classList.contains("move-up")){
         infoOnClick.classList.remove("move-up")
+        infoOnHover.textContent = "Show Info"
     }
-    else
+    else{
         infoOnClick.classList.add("move-up")
+        infoOnHover.textContent = "Hide Info"
+    }
 })
 
 
@@ -236,33 +239,12 @@ function setupGame() {
             mainIntervalIndex++;
 
             if (mainIntervalIndex == buttonSection.length) {
-                mainIntervalIndex = buttonSection.length - 2;
+                mainIntervalIndex = 0;
                 buttonSection[mainIntervalIndex].style.display = "block"
-                clearInterval(mainInterval);
-
-
-                reversedInterval = setInterval(function () {
-                    if (buttonSection[mainIntervalIndex].style.display != "none") {
-                        buttonSection[mainIntervalIndex].style.display = "none";
-                        maxCounter += 1;
-                        label2.textContent = clicks + "/" + maxCounter;
-                    }
-                    mainIntervalIndex--;
-
-                    if (mainIntervalIndex < 0) {
-                        mainIntervalIndex = 1
-                        buttonSection[mainIntervalIndex].style.display = "block"
-                        clearInterval(reversedInterval);
-                        mainInterval = setInterval(begin, mainIntervalTimer);
-                    }
-                    else {
-                        buttonSection[mainIntervalIndex].style.display = "block";
-                    }
-                }, 550);
-
+  
             }
             else {
-                buttonSection[mainIntervalIndex].style.top = `${getRandomNumber(2,92)}%`
+                buttonSection[mainIntervalIndex].style.top = `${getRandomNumber(2,88)}%`
                 buttonSection[mainIntervalIndex].style.left = `${getRandomNumber(1,85)}%`
                 buttonSection[mainIntervalIndex].style.display = "block";
             }
@@ -279,7 +261,7 @@ function setupGame() {
             label2.textContent = "0/50";
 
 
-            mainInterval = setInterval(begin, mainIntervalTimer);
+            mainInterval = setInterval(begin, 620);
 
         });
     }
