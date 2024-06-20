@@ -256,7 +256,7 @@ img {
         top: 150%;
     }
     to{
-        top: 16vw;
+        top: 13vw;
     }
 }
 @keyframes moving-up {
@@ -264,7 +264,7 @@ img {
         top: 150%;
     }
     to{
-        top: 16vw;
+        top: 13vw;
     }
 }
 .move-up{
